@@ -1,0 +1,1 @@
+// definicion de la URLBASE para trabajar con ella desde 'acciones'
