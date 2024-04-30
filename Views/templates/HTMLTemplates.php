@@ -104,6 +104,28 @@ function HTMLlistProduct(){
                 </tr>
             </tbody>
         </table>
+        <a class="btn__insert" href="">Agregar producto</a>
+    </section>
+    <?php
+}
+
+function HTMLformLogin(){
+    ?>
+    <section class="login__container">
+        <h2>Login</h2>
+        <form class="form__login" action="login" method="POST">
+            <div>
+                <label for="email">Correo electrónico:</label>
+                <input type="text" name="correo" placeholder="Ingresa tu correo" required autocomplete="false">
+            </div>
+            <div>
+                <label for="pass">Contraseña:</label>
+                <input type="password" name="pass" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <div>
+                <button class="btn__insert">Registrarse</button>
+            </div>
+        </form>
     </section>
     <?php
 }
