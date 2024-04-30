@@ -13,7 +13,7 @@ function HTMLstart(){
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- styles -->
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product App</title>
     </head>
@@ -56,10 +56,64 @@ function HTMLcardList(){
     <?php
 }
 
+function HTMLdetailProduct(){
+    ?>
+    <section class="article__container">
+        <h2 class="article__name">Motorola G40</h2>
+        <article class="article__description">Celular de alta gama con cámara de 500mpx y motor multi-válvulas.</article>
+        <div class="article__category__container">
+            <label for="category">Categoría:</label>
+            <p class="article__category">Smartphones</p>
+        </div>
+        <div class="article__stock__container">
+            <label for="stock">Stock:</label>
+            <i class="bx bx-check-circle"></i>
+        </div>
+        <p class="article__price">$350.000</p>
+    </section>
+    <?php
+}
+
+function HTMLlistProduct(){
+    ?>
+    <section class="listproduct__container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>Motorola G40</td>
+                    <td>Celular de alta gama con cámara de 10000 mpx</td>
+                    <td>Celulares</td>
+                    <td><i class="bx bx-check-circle"></i></td>
+                    <td>$350.000</td>
+                    <td>
+                        <a class="btn__edit" href="">Editar</a>
+                        <a class="btn__delete" href="">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <?php
+}
+
 function HTMLend(){
     ?>
     </main>
-        <footer></footer>
+        <footer class="footer">
+            <p class="footer__text">Design by Irigoyen/Marrero</p>
+        </footer>
     </body>
     </html>
 <?php

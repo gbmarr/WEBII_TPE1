@@ -75,16 +75,16 @@ h1 {
     border-radius: 10px;
 }
 
-.card__name {
+.card__name, .article__name {
     font: 1.5em "Fjalla One", sans-serif;
     color: var(--green);
 }
 
-.card__description {
+.card__description, .article__description {
     font-style: italic;
 }
 
-.card__container > div {
+.card__container > div, .article__container > div {
     margin: .3em;
     padding: .5em;
     display: flex;
@@ -92,8 +92,96 @@ h1 {
     align-items: baseline;
 }
 
-.card__price {
+.card__price, .article__price {
     text-align: end;
     font: 1.3em "Fjalla One", sans-serif;
     color: var(--green);
+}
+
+/* ESTILOS DE VER DETALLE */
+.article__container {
+    width: 50%;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+}
+
+.article__name, .article__description {
+    margin: .5em;
+    font-size: 2em;
+}
+
+.article__description {
+    font-size: 1.5em;
+}
+
+.article__category__container, .article__stock__container {
+    width: 50%;
+}
+
+.article__category, .article__category__container > label, .article__stock__container > label, .article__stock__container i {
+    font-size: 1.5em;
+}
+
+.article__price {
+    padding: .5em;
+    font-size: 2em;
+}
+
+/* ESTILOS DE LA TABLA DE PRODUCTOS */
+.listproduct__container {
+    margin: auto;
+    padding: 1em;
+    width: 80%;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+}
+
+table {
+    margin: auto;
+}
+
+th {
+    font-weight: bold;
+}
+
+th, td, td > i {
+    padding: .4em;
+    text-align: center;
+    width: fit-content;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* ESTILOS DE BOTONES DE ACCIONES */
+.btn__edit, .btn__delete {
+    background-color: var(--green);
+    color: var(--black);
+    font-weight: bold;
+    padding: .3em;
+    border-radius: 4px;
+}
+
+.btn__delete {
+    background-color: var(--red);
+}
+
+/* ESTILOS DEL FOOTER */
+.footer {
+    margin: auto;
+    padding: .5em;
+    background-color: var(--green);
+    color: var(--black);
+    position: fixed;
+    bottom: 0;
+}
+
+.footer__text {
+    margin: auto;
+    font-style: italic;
+    align-items: baseline;
+    width: fit-content;
+    color: var(--black);
+    background-color: transparent;
 }
