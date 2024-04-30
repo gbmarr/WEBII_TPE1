@@ -136,7 +136,7 @@ h1 {
 }
 
 /* ESTILOS DE LA TABLA DE PRODUCTOS */
-.listproduct__container, .login__container {
+.listproduct__container, .login__container, .product__container {
     margin: 1em auto;
     text-align: center;
     padding: 1em;
@@ -180,11 +180,11 @@ th, td, td > i {
 }
 
 /* ESTILOS DEL FORMULARIO DE LOGIN */
-.login__container {
+.login__container, .product__container {
     width: 50%;
 }
 
-.form__login {
+.form__login, .form__product {
     width: 80%;
     margin: auto;
     text-align: start;
@@ -192,25 +192,35 @@ th, td, td > i {
     color: var(--black);
 }
 
-.form__login > div {
+.form__login > div, .form__product > div {
     padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.form__login > div > label {
+.form__login > div > label, .form__product > div > label {
     width: fit-content;
     margin: .5em;
 }
 
-.form__login > button {
+.form__login > button, .form__product > button {
     width: 50%;
 }
 
-input {
+input, select, option {
     width: 70%;
     padding: .3em;
+}
+
+/* ESTILOS DEL FORMULARIO DE PRODUCTO */
+.div__radiobtn {
+    margin: auto;
+    width: 70%;
+}
+
+.div__radiobtn > label, .div__radiobtn > input {
+    margin: auto;
 }
 
 /* ESTILOS DEL FOOTER */

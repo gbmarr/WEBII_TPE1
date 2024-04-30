@@ -1,5 +1,6 @@
 <?php
 
+// funcion que imprime doc html con inclusion de fonts, styles, icons y encabezado de la aplicacion
 function HTMLstart(){
     ?>
     <!DOCTYPE html>
@@ -32,6 +33,7 @@ function HTMLstart(){
 <?php
 }
 
+// funcion que toma cada objeto(registro) y lo imprime con sus datos en forma de card 
 function HTMLcardList(){
     ?>
     <section class="cardlist__container">
@@ -56,6 +58,7 @@ function HTMLcardList(){
     <?php
 }
 
+// funcion que muestra un registro con sus datos de manera detallada
 function HTMLdetailProduct(){
     ?>
     <section class="article__container">
@@ -74,6 +77,7 @@ function HTMLdetailProduct(){
     <?php
 }
 
+// funcion que lista los registros y los presenta en forma de tabla con la implementacion de botones de edicion del registro, eliminacion y un boton externo para agregar un nuevo registro
 function HTMLlistProduct(){
     ?>
     <section class="listproduct__container">
@@ -109,11 +113,56 @@ function HTMLlistProduct(){
     <?php
 }
 
+// funcion que muestra un formulario para agregar un nuevo producto o para editar y actulizar un producto ya existente
+function HTMLformProduct(){
+    // este formulario html va a ser utilizado tanto para agregar un nuevo producto
+    // como tambien para editar un producto existente
+    ?>
+    <section class="product__container">
+        <form class="form__product" action="" method="POST">
+            <div>
+                <label for="idProduct">Id:</label>
+                <input type="number" name="idProduct" disabled/>
+            </div>
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="description">Descripción:</label>
+                <input type="text" name="description"/>
+            </div>
+            <div>
+                <label for="category">Categoría:</label>
+                <select name="category">
+                    <option value="Notebooks">Notebooks</option>
+                </select>
+            </div>
+            <div>
+                <label for="stock">Stock:</label>
+                <div class="div__radiobtn">
+                    <input type="radio" name="stock">Disponible
+                    <input type="radio" name="stock">No disponible
+                </div>
+            </div>
+            <div>
+                <label for="price">Precio:</label>
+                <input type="number" name="price">
+            </div>
+            <div>
+                <button type="submit" class="btn__insert">Agregar producto</button>
+            </div>
+        </form>
+    </section>
+    <?php
+}
+
+// funcion que muestra un formulario de registro y login para el usuario
 function HTMLformLogin(){
     ?>
     <section class="login__container">
         <h2>Login</h2>
-        <form class="form__login" action="login" method="POST">
+        <form class="form__login" action="" method="POST">
             <div>
                 <label for="email">Correo electrónico:</label>
                 <input type="text" name="correo" placeholder="Ingresa tu correo" required autocomplete="false">
@@ -130,6 +179,7 @@ function HTMLformLogin(){
     <?php
 }
 
+// funcion que imprime el cierre de un documento html y muestra el footer
 function HTMLend(){
     ?>
     </main>
