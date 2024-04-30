@@ -1,0 +1,99 @@
+/* PALETA DE COLORES DE LA APP */
+:root {
+    --red: #da2c38ff;
+    --black: #0d1317ff;
+    --white: #fffaffff;
+    --grey: #4c565bff;
+    --green: #0cce6bff;
+}
+
+/* ESTILOS GENERALES DE LA APLICACION */
+* {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font: 16px "Raleway", sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* ESTILOS DEL HEADER */
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--grey);
+}
+
+h1 {
+    width: 30%;
+    padding: .5em;
+    font: 2.5em "Fjalla One", sans-serif;
+    color: var(--green);
+}
+
+.navbar {
+    width: 70%;
+    padding: .5em;
+    margin: auto;
+}
+
+.navbar__list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.navbar__list__item {
+    width: fit-content;
+    margin: auto;
+}
+
+.navbar__list__item a {
+    font: 1.5em "Fjalla One", sans-serif;
+}
+
+/* ESTILOS DEL MAIN CONTAINER */
+.main__container {
+    padding: 1em;
+    margin: auto;
+}
+
+/* ESTILOS DE LA CARDLIST CONTAINER Y DE LAS CARDS INDIVIDUALES */
+.cardlist__container {
+    margin: 1em;
+    padding: 1em;
+}
+
+.card__container {
+    width: 25%;
+    padding: 1em;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+}
+
+.card__name {
+    font: 1.5em "Fjalla One", sans-serif;
+    color: var(--green);
+}
+
+.card__description {
+    font-style: italic;
+}
+
+.card__container > div {
+    margin: .3em;
+    padding: .5em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.card__price {
+    text-align: end;
+    font: 1.3em "Fjalla One", sans-serif;
+    color: var(--green);
+}
