@@ -2,10 +2,10 @@
 <?php
 
 require_once 'config/ConfigApp.php';
-require_once 'Views/ArticlesView.php';
-require_once 'acciones/ArticlesAcciones.php';
+require_once 'controller/ArticlesController.php';
+require_once 'view/ArticlesView.php';
 
-// $controller = new ProductosController();
+$controller = new ArticleController();
 // si no podemos utilizar objetos, en el if debemos llamar a cada acción en particular con if-elseif, if-elseif...
 
 function parseUrl($url){
@@ -24,9 +24,9 @@ if(array_key_exists($action, ConfigApp::$ACTIONS)){
     $method = ConfigApp::$ACTIONS[$action];
 
     if(isset($params) && $params != null){
-        // $controller->$method($params);
+        $controller->$method($params);
     }else{
-        // $controller->$method();
+        $controller->$method();
     }
 }else{
     echo "<h1>ERROR EN LA CARGA DE DATOS</h1>";

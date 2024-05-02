@@ -5,3 +5,8 @@
 // método de inserción de producto
 // método de actualización de producto
 // método de eliminación de producto
+<?php
+
+class ArticleModel{
+
+}
