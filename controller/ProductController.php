@@ -1,7 +1,7 @@
+<?php
 // métodos que serán llamados desde el router(+ configapp)
 // llamado a la DB y recepción de los datos que retorne
 // llamado a las vistas y envío por parámetros de los datos recibidos desde la DB
-<?php
 require_once './view/ProductView.php';
 require_once './model/ProductModel.php';
 require_once './model/Product.php';
@@ -18,7 +18,8 @@ class ProductController{
     }
 
     function mostrarHome(){
-
+        $Productos = $this->model->getProducts();
+        $this->view->verCards($Productos);
     }
 
     function mostrarLista(){

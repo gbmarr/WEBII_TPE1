@@ -24,11 +24,13 @@ class Database{
     
     function executeQuery($query, $params = []){
         try {
+            $this->Connect();
             $consulta = $this->conn->prepare($query);
             $consulta->execute($params);
             return $consulta;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return null;
         }
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 class Product{
-    private $idProducto;
-    private $nombre;
-    private $descripcion;
-    private $precio;
-    private $stock;
-    private $idCategoria;
+    public $idProducto;
+    public $nombre;
+    public $descripcion;
+    public $precio;
+    public $stock;
+    public $categoria;
 }

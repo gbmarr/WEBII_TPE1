@@ -1,61 +1,69 @@
 <?php
+require_once './view/ProductView.php';
 
 // funcion que imprime doc html con inclusion de fonts, styles, icons y encabezado de la aplicacion
 function HTMLstart(){
-    ?>
+    $HTMLstart = "
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang='en'>
     <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Fjalla+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap' rel='stylesheet'>
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- styles -->
-    <link rel="stylesheet" href="./styles/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='view/styles/styles.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Product App</title>
     </head>
     <body>
-    <header class="header">
+    <header class='header'>
         <h1>Product App</h1>
-        <nav class="navbar">
-            <ul class="navbar__list">
-                <li class="navbar__list__item"><a href="/inicio">Inicio</a></li>
-                <li class="navbar__list__item"><a href="/productos">Productos</a></li>
-                <li class="navbar__list__item"><a href="/perfil">Perfil</a></li>
+        <nav class='navbar'>
+            <ul class='navbar__list'>
+                <li class='navbar__list__item'><a href='/inicio'>Inicio</a></li>
+                <li class='navbar__list__item'><a href='/productos'>Productos</a></li>
+                <li class='navbar__list__item'><a href='/perfil'>Perfil</a></li>
             </ul>
         </nav>
     </header>
-    <main class="main__container">
-<?php
+    <main class='main__container'>
+    ";
+    echo $HTMLstart;
 }
 
 // funcion que toma cada objeto(registro) y lo imprime con sus datos en forma de card 
-function HTMLcardList(){
+function HTMLcardList($Productos){
+    HTMLstart();
     ?>
-    <section class="cardlist__container">
-            <div class="card__container">
-                <h2 class="card__name">Motorola G40</h2>
+    <?php foreach($Productos as $Producto){
+        $echo = "
+        <section class='cardlist__container'>
+            <div class='card__container'>
+                <h2 class='card__name'>$Producto->nombre</h2>
                 <div>
-                    <label for="description">Descripción:</label>
-                    <article class="card__description">Celular de alta gama con 100GB de RAM cámara de 6 cilindros con batería multi-válvulas.</article>
+                    <label for='description'>Descripción:</label>
+                    <article class='card__description'>$Producto->descripcion</article>
                 </div>
                 <div>
-                    <label for="category">Categoría:</label>
-                    <p class="card__category">Smartphones</p>
+                    <label for='category'>Categoría:</label>
+                    <p class='card__category'>$Producto->categoria</p>
                 </div>
                 <div>
-                    <label for="stock">Stock disponible:</label>
+                    <label for='stock'>Stock disponible:</label>
                     <i class='bx bx-check-circle'></i>
                     <!-- <i class='bx bx-x-circle'></i> -->
                 </div>
-                <p class="card__price">$350.000</p>
+                <p class='card__price'>$$Producto->precio</p>
             </div>
-        </section>
+        </section>";
+        echo $echo;
+    } ?>
     <?php
+    HTMLend();
 }
 
 // funcion que muestra un registro con sus datos de manera detallada
@@ -179,14 +187,23 @@ function HTMLformLogin(){
     <?php
 }
 
+// pagina que muestra error en la carga de datos para cualquiera de las acciones del usuario que no resulten correctamente
+function HTMLerrorPage(){
+    ?>
+    <section class="error__container">
+        <h1>La carda de datos no ha sido correcta.</h1>
+    </section>
+    <?php
+}
+
 // funcion que imprime el cierre de un documento html y muestra el footer
 function HTMLend(){
-    ?>
+    $HTMLend = "
     </main>
-        <footer class="footer">
-            <p class="footer__text">Design by Irigoyen/Marrero</p>
+        <footer class='footer'>
+            <p class='footer__text'>Design by Irigoyen/Marrero</p>
         </footer>
     </body>
-    </html>
-<?php
+    </html>";
+    echo $HTMLend;
 }
