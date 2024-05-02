@@ -1,11 +1,11 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-30 12:18:51.254
+-- Last modification date: 2024-05-02 19:38:50.231
 
 -- tables
 -- Table: categoria
 CREATE TABLE categoria (
     idCat int  NOT NULL AUTO_INCREMENT,
-    descripcion varchar(30)  NOT NULL,
+    descripcionCat varchar(30)  NOT NULL,
     CONSTRAINT categoria_pk PRIMARY KEY (idCat)
 );
 

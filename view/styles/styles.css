@@ -105,7 +105,7 @@ h1 {
 }
 
 /* ESTILOS DE VER DETALLE */
-.article__container {
+.article__container, .error__container {
     width: 50%;
     margin: auto;
     padding: 1em;

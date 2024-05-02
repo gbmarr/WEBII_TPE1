@@ -1,11 +1,11 @@
-// logica de ruteo del proyecto utilizando ConfigApp con acciones y parametros
 <?php
+// logica de ruteo del proyecto utilizando ConfigApp con acciones y parametros
 
 require_once 'config/ConfigApp.php';
-require_once 'controller/ArticlesController.php';
-require_once 'view/ArticlesView.php';
+require_once 'controller/ProductController.php';
+require_once 'view/ProductView.php';
 
-$controller = new ArticleController();
+$controller = new ProductController();
 // si no podemos utilizar objetos, en el if debemos llamar a cada acción en particular con if-elseif, if-elseif...
 
 function parseUrl($url){

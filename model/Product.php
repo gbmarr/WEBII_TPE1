@@ -1,6 +1,6 @@
 <?php
 
-class Article{
+class Product{
     private $idProducto;
     private $nombre;
     private $descripcion;

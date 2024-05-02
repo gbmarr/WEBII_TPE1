@@ -1,5 +1,5 @@
-// clase config con parametros y acciones
 <?php
+// clase config con parametros y acciones
 
 class ConfigApp{
     public static $ACTION = "action";

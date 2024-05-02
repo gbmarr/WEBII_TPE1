@@ -1,0 +1,47 @@
+// manipulacion de la base de datos
+// creación de la conexión a la base de datos 
+// llamado a la base de datos y paso por parámetros de datos necesarios
+// método de lectura de productos
+// método de inserción de producto
+// método de actualización de producto
+// método de eliminación de producto
+<?php
+
+require_once 'Database.php';
+require_once 'Product.php';
+
+class ProductModel{
+    private $Database;
+
+    function __construct(){
+        $this->Database = new Database();
+    }
+
+    function getProducts(){
+
+    }
+
+    function getProductByID($id){
+
+    }
+
+    function insertProduct($Article){
+
+    }
+
+    function updateProduct($Article){
+
+    }
+
+    function deleteProduct($id){
+
+    }
+
+    function getUser(){
+
+    }
+
+    function insertUser($User){
+        
+    }
+}
