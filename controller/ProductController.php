@@ -28,12 +28,13 @@ class ProductController{
     }
 
     function cargarFormularioProducto(){
+        $Categorias = $this->model->getCategorias();
         if(isset($_REQUEST['params']) && $_GET['action'] == 'productform'){
-            $id = $_GET['params'];
+            $id = $_GET['params'][0];
             $Producto = $this->model->getProductByID($id);
-            $this->view->formularioProducto($Producto);
+            $this->view->formularioProducto($Producto, $Categorias);
         }else{
-            $this->view->formularioProducto(null);
+            $this->view->formularioProducto(null, $Categorias);
         }
     }
 
@@ -51,6 +52,10 @@ class ProductController{
     }
 
     function eliminarProducto($id){
-
+        if(isset($id)){
+            $this->model->deleteProduct($id);
+        }
+        $Productos = $this->model->getProducts();
+        $this->view->verCards($Productos);
     }
 }

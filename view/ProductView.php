@@ -28,11 +28,11 @@ class ProductView{
         }
     }
 
-    function formularioProducto($Producto){
+    function formularioProducto($Producto, $Categorias){
         if($Producto != null){
-            HTMLformProduct($Producto);
+            HTMLformProduct($Producto, $Categorias);
         }else{
-            HTMLformProduct(null);
+            HTMLformProduct(null, $Categorias);
         }
     }
 }

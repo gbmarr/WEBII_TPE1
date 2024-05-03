@@ -68,6 +68,29 @@ class ProductModel{
         }
     }
 
+    function getCategorias(){
+        try {
+            $query = "SELECT `idCat`, `descripcionCat` FROM `categoria`";
+            $sentencia = $this->Database->executeQuery($query);
+            $Categorias = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            $listaCategorias = [];
+            
+            foreach($Categorias as $categoria){
+                $nuevo = new Categoria();
+                $nuevo->idCat = $categoria['idCat'];
+                $nuevo->descripcion = $categoria['descripcionCat'];
+                
+                $listaCategorias[] = $nuevo;
+            }
+
+            return $listaCategorias;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+
     function insertProduct($Article){
         try {
             //code...
@@ -86,9 +109,18 @@ class ProductModel{
 
     function deleteProduct($id){
         try {
-            //code...
+            $query = "DELETE FROM `productos` WHERE `idProducto`=?";
+            $params = [$id];
+            $sentencia = $this->Database->executeQuery($query, $params[0]);
+            if($sentencia){
+                return true;
+            }else{
+                return false;
+            }
+            return false;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return null;
         }
     }
 

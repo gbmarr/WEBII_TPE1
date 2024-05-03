@@ -137,7 +137,7 @@ function HTMLlistProduct($Productos){
 }
 
 // funcion que muestra un formulario para agregar un nuevo producto o para editar y actulizar un producto ya existente
-function HTMLformProduct($Producto){
+function HTMLformProduct($Producto, $Categorias){
     // este formulario html va a ser utilizado tanto para agregar un nuevo producto
     // como tambien para editar un producto existente
     HTMLstart();
@@ -160,8 +160,12 @@ function HTMLformProduct($Producto){
                 </div>
                 <div>
                 <label for='category'>Categoría:</label>
-                <select name='category'>
-                <option value='Notebooks'>Notebooks</option>
+                <select name='category'>";
+                foreach($Categorias as $categoria){
+                    $formulario .= 
+                    "<option value='$categoria->idCat'>$categoria->descripcion</option>";
+                }
+                $formulario .= "
                 </select>
                 </div>
                 <div>
@@ -195,8 +199,12 @@ function HTMLformProduct($Producto){
                 </div>
                 <div>
                 <label for='category'>Categoría:</label>
-                <select name='category'>
-                <option value='Notebooks'>Notebooks</option>
+                <select name='category'>";
+                foreach($Categorias as $categoria){
+                    $formulario .= 
+                    "<option value='$categoria->idCat'>$categoria->descripcion</option>";
+                }
+                $formulario .= "
                 </select>
                 </div>
                 <div>
