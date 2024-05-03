@@ -23,7 +23,8 @@ class ProductController{
     }
 
     function mostrarLista(){
-
+        $Productos = $this->model->getProducts();
+        $this->view->verListado($Productos);
     }
 
     function cargarDatosProducto($id){

@@ -24,9 +24,9 @@ function HTMLstart(){
         <h1>Product App</h1>
         <nav class='navbar'>
             <ul class='navbar__list'>
-                <li class='navbar__list__item'><a href='/inicio'>Inicio</a></li>
-                <li class='navbar__list__item'><a href='/productos'>Productos</a></li>
-                <li class='navbar__list__item'><a href='/perfil'>Perfil</a></li>
+                <li class='navbar__list__item'><a href='home'>Inicio</a></li>
+                <li class='navbar__list__item'><a href='list'>Productos</a></li>
+                <li class='navbar__list__item'><a href='profile'>Perfil</a></li>
             </ul>
         </nav>
     </header>
@@ -38,10 +38,10 @@ function HTMLstart(){
 // funcion que toma cada objeto(registro) y lo imprime con sus datos en forma de card 
 function HTMLcardList($Productos){
     HTMLstart();
+    $echo = "<section class='cardlist__container'>";
     ?>
     <?php foreach($Productos as $Producto){
-        $echo = "
-        <section class='cardlist__container'>
+        $echo .= "
             <div class='card__container'>
                 <h2 class='card__name'>$Producto->nombre</h2>
                 <div>
@@ -58,10 +58,11 @@ function HTMLcardList($Productos){
                     <!-- <i class='bx bx-x-circle'></i> -->
                 </div>
                 <p class='card__price'>$$Producto->precio</p>
-            </div>
-        </section>";
+            </div>";
+        }
+        $echo .= "</section>";
         echo $echo;
-    } ?>
+        ?>
     <?php
     HTMLend();
 }
@@ -86,7 +87,8 @@ function HTMLdetailProduct(){
 }
 
 // funcion que lista los registros y los presenta en forma de tabla con la implementacion de botones de edicion del registro, eliminacion y un boton externo para agregar un nuevo registro
-function HTMLlistProduct(){
+function HTMLlistProduct($Productos){
+    HTMLstart();
     ?>
     <section class="listproduct__container">
         <table>
@@ -102,23 +104,29 @@ function HTMLlistProduct(){
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>Motorola G40</td>
-                    <td>Celular de alta gama con cámara de 10000 mpx</td>
-                    <td>Celulares</td>
-                    <td><i class="bx bx-check-circle"></i></td>
-                    <td>$350.000</td>
-                    <td>
-                        <a class="btn__edit" href="">Editar</a>
-                        <a class="btn__delete" href="">Eliminar</a>
-                    </td>
-                </tr>
+                <?php foreach($Productos as $Producto){
+                    $fila = "
+                    <tr>
+                        <td>$Producto->idProducto</td>
+                        <td>$Producto->nombre</td>
+                        <td>$Producto->descripcion</td>
+                        <td>$Producto->categoria</td>";
+                        $fila .= $Producto->stock == 1 ? "<td><i class='bx bx-check-circle'></i></td>" : "<td><i class='bx bx-x-circle'></i></td>";
+                        $fila .= "
+                        <td>$$Producto->precio</td>
+                        <td>
+                            <a class='btn__edit' href=''>Editar</a>
+                            <a class='btn__delete' href=''>Eliminar</a>
+                        </td>
+                    </tr>";
+                    echo $fila;
+                    }?>
             </tbody>
         </table>
         <a class="btn__insert" href="">Agregar producto</a>
     </section>
     <?php
+    HTMLend();
 }
 
 // funcion que muestra un formulario para agregar un nuevo producto o para editar y actulizar un producto ya existente

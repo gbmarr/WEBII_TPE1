@@ -11,4 +11,12 @@ class ProductView{
             HTMLerrorPage();
         }
     }
+
+    function verListado($Productos){
+        if($Productos != null){
+            HTMLlistProduct($Productos);
+        }else{
+            HTMLerrorPage();
+        }
+    }
 }

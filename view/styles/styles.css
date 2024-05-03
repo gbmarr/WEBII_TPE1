@@ -70,12 +70,16 @@ h1 {
 
 /* ESTILOS DE LA CARDLIST CONTAINER Y DE LAS CARDS INDIVIDUALES */
 .cardlist__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     margin: 1em;
     padding: 1em;
 }
 
 .card__container {
-    width: 25%;
+    width: 350px;
     padding: 1em;
     border: 1px solid var(--green);
     border-radius: 10px;
@@ -87,6 +91,7 @@ h1 {
 }
 
 .card__description, .article__description {
+    width: fit-content;
     font-style: italic;
 }
 
