@@ -26,8 +26,8 @@ function HTMLstart(){
         <nav class='navbar'>
             <ul class='navbar__list'>
                 <li class='navbar__list__item'><a href='".BASE_URL."'>Inicio</a></li>
-                <li class='navbar__list__item'><a href='".BASE_URL."/list'>Productos</a></li>
-                <li class='navbar__list__item'><a href='".BASE_URL."/profile'>Perfil</a></li>
+                <li class='navbar__list__item'><a href='".BASE_URL."list'>Productos</a></li>
+                <li class='navbar__list__item'><a href='".BASE_URL."profile'>Perfil</a></li>
             </ul>
         </nav>
     </header>
@@ -59,9 +59,9 @@ function HTMLcardList($Productos){
                 $card .= "
                 </div>
                 <div>
-                    <p class='card__price'>$$Producto->precio</p>
-                </div>
                 <a class='btn__detail' href='detail/$Producto->idProducto'>Ver Detalle</a>
+                <p class='card__price'>$$Producto->precio</p>
+                </div>
             </div>";
         }
         $card .= "</section>";
@@ -121,7 +121,7 @@ function HTMLlistProduct($Productos){
                         $fila .= $Producto->stock == 1 ? "<td><i class='bx bx-check-circle'></i></td>" : "<td><i class='bx bx-x-circle'></i></td>";
                         $fila .= "
                         <td>$$Producto->precio</td>
-                        <td>
+                        <td class='listproduct__btncontainer'>
                             <a class='btn__edit' href='productform/$Producto->idProducto'>Editar</a>
                             <a class='btn__delete' href='delete/$Producto->idProducto'>Eliminar</a>
                         </td>
@@ -130,7 +130,10 @@ function HTMLlistProduct($Productos){
                     }?>
             </tbody>
         </table>
-        <a class="btn__insert" href="productform">Agregar producto</a>
+        <?php
+        echo $boton = "
+        <a class='btn__insert' href='".BASE_URL."productform'>Agregar producto</a>";
+        ?>
     </section>
     <?php
     HTMLend();
@@ -145,7 +148,7 @@ function HTMLformProduct($Producto, $Categorias){
     <section class='product__container'>";
     if($Producto != null){
         $formulario .= "
-            <form class='form__product' action='' method='POST'>
+            <form class='form__product' action='".BASE_URL."edit' method='POST'>
                 <div>
                     <label for='idProduct'>Id:</label>
                     <input type='number' name='idProduct' disabled/>$Producto->idProducto
@@ -184,7 +187,7 @@ function HTMLformProduct($Producto, $Categorias){
                 </div>";
         }else{
             $formulario .= "
-            <form class='form__product' action='' method='POST'>
+            <form class='form__product' action='".BASE_URL."add' method='POST'>
                 <div>
                     <label for='idProduct'>Id:</label>
                     <input type='number' name='idProduct' disabled/>

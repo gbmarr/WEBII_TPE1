@@ -29,8 +29,8 @@ class ProductController{
 
     function cargarFormularioProducto(){
         $Categorias = $this->model->getCategorias();
-        if(isset($_REQUEST['params']) && $_GET['action'] == 'productform'){
-            $id = $_GET['params'][0];
+        if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])){
+            $id = $_GET['params'];
             $Producto = $this->model->getProductByID($id);
             $this->view->formularioProducto($Producto, $Categorias);
         }else{
@@ -39,7 +39,21 @@ class ProductController{
     }
 
     function agregarProducto(){
-
+        try {
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)){
+                $Producto = new Product();
+                $Producto->nombre = $_POST['name'];
+                $Producto->descripcion = $_POST['description'];
+                $Producto->precio = $_POST['price'];
+                $Producto->stock = $_POST['stock'];
+                $Producto->categoria = $_POST['category'];
+            }
+            $this->model->insertProduct($Producto);
+            $Productos = $this->model->getProducts();
+            $this->view->verCards($Productos);
+        } catch (\Throwable $e) {
+            echo "Error: " . $e;
+        }
     }
 
     function editarProducto($Producto){

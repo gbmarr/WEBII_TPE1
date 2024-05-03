@@ -91,11 +91,27 @@ class ProductModel{
         }
     }
 
-    function insertProduct($Article){
+    function insertProduct($Producto){
         try {
-            //code...
+            $query = "INSERT INTO `productos`(`nombre`, `descripcion`, `precio`, `stock`, `idCategoria`, `categoria_idCat`) VALUES (?,?,?,?,?,?)";
+            $params = [
+                $Producto->nombre,
+                $Producto->descripcion,
+                $Producto->precio,
+                $Producto->stock,
+                $Producto->categoria,
+                $Producto->categoria
+            ];
+            $sentencia = $this->Database->executeQuery($query, $params);
+            if($sentencia){
+                return true;
+            }else{
+                return false;
+            }
+            return false;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return false;
         }
     }
 

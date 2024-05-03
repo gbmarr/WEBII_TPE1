@@ -79,6 +79,7 @@ h1 {
 }
 
 .card__container {
+    margin: .5em;
     width: 350px;
     padding: 1em;
     border: 1px solid var(--green);
@@ -110,7 +111,7 @@ h1 {
 }
 
 .btn__detail {
-    width: fit-content;
+    width: 50%;
 }
 
 /* ESTILOS DE VER DETALLE */
@@ -163,7 +164,7 @@ th {
 }
 
 th, td, td > i {
-    padding: .4em;
+    padding: .5em;
     text-align: center;
     width: fit-content;
     background-color: var(--white);
@@ -178,6 +179,16 @@ th, td, td > i {
     padding: .3em;
     border: none;
     border-radius: 4px;
+}
+
+.listproduct__btncontainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.listproduct__btncontainer > a {
+    margin: .3em;
 }
 
 .btn__insert {
