@@ -27,4 +27,12 @@ class ProductView{
             HTMLerrorPage();
         }
     }
+
+    function formularioProducto($Producto){
+        if($Producto != null){
+            HTMLformProduct($Producto);
+        }else{
+            HTMLformProduct(null);
+        }
+    }
 }

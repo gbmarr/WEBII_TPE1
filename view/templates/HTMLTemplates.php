@@ -122,7 +122,7 @@ function HTMLlistProduct($Productos){
                         $fila .= "
                         <td>$$Producto->precio</td>
                         <td>
-                            <a class='btn__edit' href='edit/$Producto->idProducto'>Editar</a>
+                            <a class='btn__edit' href='productform/$Producto->idProducto'>Editar</a>
                             <a class='btn__delete' href='delete/$Producto->idProducto'>Eliminar</a>
                         </td>
                     </tr>";
@@ -130,54 +130,95 @@ function HTMLlistProduct($Productos){
                     }?>
             </tbody>
         </table>
-        <a class="btn__insert" href="">Agregar producto</a>
+        <a class="btn__insert" href="productform">Agregar producto</a>
     </section>
     <?php
     HTMLend();
 }
 
 // funcion que muestra un formulario para agregar un nuevo producto o para editar y actulizar un producto ya existente
-function HTMLformProduct($Producto = null){
+function HTMLformProduct($Producto){
     // este formulario html va a ser utilizado tanto para agregar un nuevo producto
     // como tambien para editar un producto existente
-    ?>
-    <section class="product__container">
-        <form class="form__product" action="" method="POST">
-            <div>
-                <label for="idProduct">Id:</label>
-                <input type="number" name="idProduct" disabled/>
-            </div>
-            <div>
-                <label for="name">Nombre:</label>
-                <input type="text" name="name">
-            </div>
-            <div>
-                <label for="description">Descripción:</label>
-                <input type="text" name="description"/>
-            </div>
-            <div>
-                <label for="category">Categoría:</label>
-                <select name="category">
-                    <option value="Notebooks">Notebooks</option>
-                </select>
-            </div>
-            <div>
-                <label for="stock">Stock:</label>
-                <div class="div__radiobtn">
-                    <input type="radio" name="stock">Disponible
-                    <input type="radio" name="stock">No disponible
+    HTMLstart();
+    $formulario = "
+    <section class='product__container'>";
+    if($Producto != null){
+        $formulario .= "
+            <form class='form__product' action='' method='POST'>
+                <div>
+                    <label for='idProduct'>Id:</label>
+                    <input type='number' name='idProduct' disabled/>$Producto->idProducto
+                    </div>
+                <div>
+                <label for='name'>Nombre:</label>
+                    <input type='text' name='name'>$Producto->nombre
                 </div>
-            </div>
-            <div>
-                <label for="price">Precio:</label>
-                <input type="number" name="price">
-            </div>
-            <div>
-                <button type="submit" class="btn__insert">Agregar producto</button>
-            </div>
+                <div>
+                    <label for='description'>Descripción:</label>
+                    <input type='text' name='description'/>$Producto->descripcion
+                </div>
+                <div>
+                <label for='category'>Categoría:</label>
+                <select name='category'>
+                <option value='Notebooks'>Notebooks</option>
+                </select>
+                </div>
+                <div>
+                <label for='stock'>Stock:</label>
+                <div class='div__radiobtn'>
+                <input type='radio' name='stock'>Disponible
+                <input type='radio' name='stock'>No disponible
+                </div>
+                </div>
+                <div>
+                <label for='price'>Precio:</label>
+                <input type='number' name='price'>$Producto->precio
+                </div>
+                <div>
+                <button type='submit' class='btn__insert'>Guardar cambios</button>
+                </div>";
+        }else{
+            $formulario .= "
+            <form class='form__product' action='' method='POST'>
+                <div>
+                    <label for='idProduct'>Id:</label>
+                    <input type='number' name='idProduct' disabled/>
+                    </div>
+                <div>
+                <label for='name'>Nombre:</label>
+                    <input type='text' name='name'>
+                </div>
+                <div>
+                    <label for='description'>Descripción:</label>
+                    <input type='text' name='description'/>
+                </div>
+                <div>
+                <label for='category'>Categoría:</label>
+                <select name='category'>
+                <option value='Notebooks'>Notebooks</option>
+                </select>
+                </div>
+                <div>
+                <label for='stock'>Stock:</label>
+                <div class='div__radiobtn'>
+                <input type='radio' name='stock'>Disponible
+                <input type='radio' name='stock'>No disponible
+                </div>
+                </div>
+                <div>
+                <label for='price'>Precio:</label>
+                <input type='number' name='price'>
+                </div>
+                <div>
+                <button type='submit' class='btn__insert'>Agregar producto</button>
+                </div>";
+        }
+        $formulario .= "
         </form>
-    </section>
-    <?php
+    </section>";
+    echo $formulario;
+    HTMLend();
 }
 
 // funcion que muestra un formulario de registro y login para el usuario

@@ -27,11 +27,21 @@ class ProductController{
         $this->view->verListado($Productos);
     }
 
+    function cargarFormularioProducto(){
+        if(isset($_REQUEST['params']) && $_GET['action'] == 'productform'){
+            $id = $_GET['params'];
+            $Producto = $this->model->getProductByID($id);
+            $this->view->formularioProducto($Producto);
+        }else{
+            $this->view->formularioProducto(null);
+        }
+    }
+
     function agregarProducto(){
 
     }
 
-    function editarProducto($id){
+    function editarProducto($Producto){
 
     }
 

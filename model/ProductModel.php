@@ -48,7 +48,8 @@ class ProductModel{
     function getProductByID($id){
         try {
             $query = "SELECT `idProducto`, `nombre`, `descripcion`, `precio`, `stock`, `idCategoria`, `descripcionCat` FROM `productos`, `categoria` WHERE `idCategoria`=`idCat` AND `idProducto`=?";
-            $sentencia = $this->Database->executeQuery($query, $id);
+            $params = [$id];
+            $sentencia = $this->Database->executeQuery($query, $params[0]);
             $Producto = $sentencia->fetch(PDO::FETCH_ASSOC);
 
             $nuevo = new Product();
