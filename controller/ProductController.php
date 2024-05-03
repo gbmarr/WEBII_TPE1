@@ -27,10 +27,6 @@ class ProductController{
         $this->view->verListado($Productos);
     }
 
-    function cargarDatosProducto($id){
-
-    }
-
     function agregarProducto(){
 
     }
@@ -40,7 +36,8 @@ class ProductController{
     }
 
     function verProducto($id){
-
+        $Producto = $this->model->getProductByID($id);
+        $this->view->verDetalle($Producto);
     }
 
     function eliminarProducto($id){

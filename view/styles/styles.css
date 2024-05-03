@@ -109,6 +109,10 @@ h1 {
     color: var(--green);
 }
 
+.btn__detail {
+    width: fit-content;
+}
+
 /* ESTILOS DE VER DETALLE */
 .article__container, .error__container {
     width: 50%;
@@ -167,7 +171,7 @@ th, td, td > i {
 }
 
 /* ESTILOS DE BOTONES DE ACCIONES */
-.btn__edit, .btn__insert, .btn__delete {
+.btn__edit, .btn__insert, .btn__delete, .btn__detail {
     background-color: var(--green);
     color: var(--black);
     font-weight: bold;

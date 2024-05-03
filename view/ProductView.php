@@ -19,4 +19,12 @@ class ProductView{
             HTMLerrorPage();
         }
     }
+
+    function verDetalle($Producto){
+        if($Producto != null){
+            HTMLdetailProduct($Producto);
+        }else{
+            HTMLerrorPage();
+        }
+    }
 }

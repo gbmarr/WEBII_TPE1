@@ -8,7 +8,6 @@ class ConfigApp{
         '' => "mostrarHome",
         'home' => "mostrarHome",
         'list' => "mostrarLista",
-        'loadproduct' => "cargarDatosProducto",
         'add' => "agregarProducto",
         'edit' => "editarProducto",
         'detail' => "verProducto",

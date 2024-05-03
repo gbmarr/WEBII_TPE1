@@ -47,9 +47,23 @@ class ProductModel{
 
     function getProductByID($id){
         try {
-            //code...
+            $query = "SELECT `idProducto`, `nombre`, `descripcion`, `precio`, `stock`, `idCategoria`, `descripcionCat` FROM `productos`, `categoria` WHERE `idCategoria`=`idCat` AND `idProducto`=?";
+            $sentencia = $this->Database->executeQuery($query, $id);
+            $Producto = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+            $nuevo = new Product();
+            $nuevo->idProducto = $Producto['idProducto'];
+            $nuevo->nombre = $Producto['nombre'];
+            $nuevo->descripcion = $Producto['descripcion'];
+            $nuevo->precio = $Producto['precio'];
+            $nuevo->stock = $Producto['stock'];
+            $nuevo->categoria = $Producto['descripcionCat'];
+            
+            return $nuevo;
+
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return null;
         }
     }
 
