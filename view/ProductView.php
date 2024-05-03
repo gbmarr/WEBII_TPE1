@@ -28,7 +28,7 @@ class ProductView{
         }
     }
 
-    function formularioProducto($Producto, $Categorias){
+    function formularioProducto($Producto=null, $Categorias=null){
         if($Producto != null){
             HTMLformProduct($Producto, $Categorias);
         }else{

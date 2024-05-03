@@ -111,15 +111,33 @@ class ProductModel{
             return false;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-            return false;
+            return null;
         }
     }
 
-    function updateProduct($Article){
+    function updateProduct($Producto){
         try {
-            //code...
+            // falta la consulta de UPDATE
+            $query = "UPDATE `productos` SET `nombre`= ?,`descripcion`= ?,`precio`= ?,`stock`= ?,`idCategoria`= ?,`categoria_idCat`= ? WHERE `idProducto` = ?";
+            $params = [
+                $Producto->nombre,
+                $Producto->descripcion,
+                $Producto->precio,
+                $Producto->stock,
+                $Producto->categoria,
+                $Producto->categoria,
+                $Producto->idProducto
+            ];
+            $sentencia = $this->Database->executeQuery($query, $params);
+            if($sentencia){
+                return true;
+            }else{
+                return false;
+            }
+            return false;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return null;
         }
     }
 

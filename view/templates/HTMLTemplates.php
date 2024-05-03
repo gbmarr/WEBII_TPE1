@@ -140,33 +140,33 @@ function HTMLlistProduct($Productos){
 }
 
 // funcion que muestra un formulario para agregar un nuevo producto o para editar y actulizar un producto ya existente
-function HTMLformProduct($Producto, $Categorias){
+function HTMLformProduct($Producto = null, $Categorias){
     // este formulario html va a ser utilizado tanto para agregar un nuevo producto
     // como tambien para editar un producto existente
     HTMLstart();
     $formulario = "
     <section class='product__container'>";
-    if($Producto != null){
         $formulario .= "
-            <form class='form__product' action='".BASE_URL."edit' method='POST'>
+        <form class='form__product' action='".BASE_URL.($Producto ? 'edit':'add'). "' method='POST'>
                 <div>
                     <label for='idProduct'>Id:</label>
-                    <input type='number' name='idProduct' disabled/>$Producto->idProducto
+                    <input type='number' name='idProduct' value='" . ($Producto ? $Producto->idProducto : '') . "'  readonly/>
                     </div>
-                <div>
-                <label for='name'>Nombre:</label>
-                    <input type='text' name='name'>$Producto->nombre
+                <div>";
+
+                $formulario .= "<label for='name'>Nombre:</label> 
+                    <input type='text' name='name' value='" . ($Producto ? $Producto->nombre : '') . "'>
                 </div>
                 <div>
                     <label for='description'>Descripción:</label>
-                    <input type='text' name='description'/>$Producto->descripcion
+                    <input type='text' name='description' value='" . ($Producto ? $Producto->descripcion : '') . "' />
                 </div>
                 <div>
                 <label for='category'>Categoría:</label>
                 <select name='category'>";
                 foreach($Categorias as $categoria){
                     $formulario .= 
-                    "<option value='$categoria->idCat'>$categoria->descripcion</option>";
+                    "<option value='$categoria->idCat' ". ($Producto ? ($categoria->descripcion == $Producto->categoria ? 'selected' : '') : '') ." >$categoria->descripcion</option>";
                 }
                 $formulario .= "
                 </select>
@@ -174,60 +174,19 @@ function HTMLformProduct($Producto, $Categorias){
                 <div>
                 <label for='stock'>Stock:</label>
                 <div class='div__radiobtn'>
-                <input type='radio' name='stock'>Disponible
-                <input type='radio' name='stock'>No disponible
+                <input type='radio' name='stock' ". ($Producto ? ($Producto->stock == 1 ? 'checked' : '') : '') ." >Disponible
+                <input type='radio' name='stock' ". ($Producto ? ($Producto->stock == 0 ? 'checked' : '') : '') ." >No disponible
                 </div>
                 </div>
                 <div>
                 <label for='price'>Precio:</label>
-                <input type='number' name='price'>$Producto->precio
+                <input type='number' name='price' value='" . ($Producto ? $Producto->precio : '') . "'>
                 </div>
                 <div>
                 <button type='submit' class='btn__insert'>Guardar cambios</button>
-                </div>";
-        }else{
-            $formulario .= "
-            <form class='form__product' action='".BASE_URL."add' method='POST'>
-                <div>
-                    <label for='idProduct'>Id:</label>
-                    <input type='number' name='idProduct' disabled/>
-                    </div>
-                <div>
-                <label for='name'>Nombre:</label>
-                    <input type='text' name='name'>
                 </div>
-                <div>
-                    <label for='description'>Descripción:</label>
-                    <input type='text' name='description'/>
-                </div>
-                <div>
-                <label for='category'>Categoría:</label>
-                <select name='category'>";
-                foreach($Categorias as $categoria){
-                    $formulario .= 
-                    "<option value='$categoria->idCat'>$categoria->descripcion</option>";
-                }
-                $formulario .= "
-                </select>
-                </div>
-                <div>
-                <label for='stock'>Stock:</label>
-                <div class='div__radiobtn'>
-                <input type='radio' name='stock'>Disponible
-                <input type='radio' name='stock'>No disponible
-                </div>
-                </div>
-                <div>
-                <label for='price'>Precio:</label>
-                <input type='number' name='price'>
-                </div>
-                <div>
-                <button type='submit' class='btn__insert'>Agregar producto</button>
-                </div>";
-        }
-        $formulario .= "
-        </form>
-    </section>";
+            </form>
+        </section>";
     echo $formulario;
     HTMLend();
 }
@@ -235,6 +194,8 @@ function HTMLformProduct($Producto, $Categorias){
 // funcion que muestra un formulario de registro y login para el usuario
 function HTMLformLogin(){
     ?>
+    <select name="" id="">
+    </select>
     <section class="login__container">
         <h2>Login</h2>
         <form class="form__login" action="" method="POST">
