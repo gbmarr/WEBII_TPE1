@@ -140,6 +140,14 @@ h1 {
     font-size: 1.5em;
 }
 
+.bx-check-circle {
+    color: var(--green);
+}
+
+.bx-x-circle {
+    color: var(--red);
+}
+
 .article__price {
     padding: .5em;
     font-size: 2em;

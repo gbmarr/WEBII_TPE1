@@ -174,8 +174,8 @@ function HTMLformProduct($Producto = null, $Categorias){
                 <div>
                 <label for='stock'>Stock:</label>
                 <div class='div__radiobtn'>
-                <input type='radio' name='stock' ". ($Producto ? ($Producto->stock == 1 ? 'checked' : '') : '') ." >Disponible
-                <input type='radio' name='stock' ". ($Producto ? ($Producto->stock == 0 ? 'checked' : '') : '') ." >No disponible
+                <input type='radio' value='1' name='stock' ". ($Producto ? ($Producto->stock == 1 ? 'checked' : '') : '') ." >Disponible
+                <input type='radio' value='0' name='stock' ". ($Producto ? ($Producto->stock == 0 ? 'checked' : '') : '') ." >No disponible
                 </div>
                 </div>
                 <div>
@@ -194,8 +194,6 @@ function HTMLformProduct($Producto = null, $Categorias){
 // funcion que muestra un formulario de registro y login para el usuario
 function HTMLformLogin(){
     ?>
-    <select name="" id="">
-    </select>
     <section class="login__container">
         <h2>Login</h2>
         <form class="form__login" action="" method="POST">

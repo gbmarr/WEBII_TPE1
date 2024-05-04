@@ -1,10 +1,10 @@
 <?php
 
 class User{
-    private $idUsuario;
-    private $email;
-    private $password;
-    private $nombre;
-    private $apellido;
-    private $admin;
+    public $idUsuario;
+    public $email;
+    public $password;
+    public $nombre;
+    public $apellido;
+    public $admin;
 }

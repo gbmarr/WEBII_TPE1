@@ -157,20 +157,4 @@ class ProductModel{
             return null;
         }
     }
-
-    function getUser(){
-        try {
-            //code...
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
-    function insertUser($User){
-        try {
-            //code...
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
 }
