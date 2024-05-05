@@ -12,9 +12,9 @@ class ProductView{
         }
     }
 
-    function verListado($Productos){
+    function verListado($Productos, $Logueado = null){
         if($Productos != null){
-            HTMLlistProduct($Productos);
+            HTMLlistProduct($Productos, $Logueado);
         }else{
             HTMLerrorPage();
         }

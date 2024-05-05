@@ -1,9 +1,8 @@
 <?php
-require_once './view/ProductView.php';
 require_once './BASE_URL.php';
 
 // funcion que imprime doc html con inclusion de fonts, styles, icons y encabezado de la aplicacion
-function HTMLstart(){
+function HTMLstart($id = null){
     $HTMLstart = "
     <!DOCTYPE html>
     <html lang='en'>
@@ -26,8 +25,13 @@ function HTMLstart(){
         <nav class='navbar'>
             <ul class='navbar__list'>
                 <li class='navbar__list__item'><a href='".BASE_URL."'>Inicio</a></li>
-                <li class='navbar__list__item'><a href='".BASE_URL."list'>Productos</a></li>
-                <li class='navbar__list__item'><a href='".BASE_URL."profile'>Perfil</a></li>
+                <li class='navbar__list__item'><a href='".BASE_URL."list'>Productos</a></li>";
+                if($id){
+                    $HTMLstart .= "<li class='navbar__list__item'><a href='".BASE_URL."profile/$id'>Perfil</a></li>";
+                }else{
+                    $HTMLstart .= "<li class='navbar__list__item'><a href='".BASE_URL."login'>Login</a></li>";
+                }
+            $HTMLstart .= "
             </ul>
         </nav>
     </header>
@@ -94,8 +98,8 @@ function HTMLdetailProduct($Producto){
 }
 
 // funcion que lista los registros y los presenta en forma de tabla con la implementacion de botones de edicion del registro, eliminacion y un boton externo para agregar un nuevo registro
-function HTMLlistProduct($Productos){
-    HTMLstart();
+function HTMLlistProduct($Productos, $admin = null, $id = null){
+    HTMLstart($id);
     ?>
     <section class="listproduct__container">
         <table>
@@ -107,7 +111,10 @@ function HTMLlistProduct($Productos){
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Precio</th>
-                    <th>Acciones</th>
+                    <?php
+                    if($admin == 1){ ?>
+                        <th>Acciones</th>
+                    <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -120,19 +127,25 @@ function HTMLlistProduct($Productos){
                         <td>$Producto->categoria</td>";
                         $fila .= $Producto->stock == 1 ? "<td><i class='bx bx-check-circle'></i></td>" : "<td><i class='bx bx-x-circle'></i></td>";
                         $fila .= "
-                        <td>$$Producto->precio</td>
-                        <td class='listproduct__btncontainer'>
+                        <td>$$Producto->precio</td>";
+                        if($admin == 1){
+                            $fila .= "
+                            <td class='listproduct__btncontainer'>
                             <a class='btn__edit' href='productform/$Producto->idProducto'>Editar</a>
                             <a class='btn__delete' href='delete/$Producto->idProducto'>Eliminar</a>
-                        </td>
+                            </td>";
+                        }
+                        $fila .= "
                     </tr>";
                     echo $fila;
                     }?>
             </tbody>
         </table>
         <?php
+        if($admin == 1){
         echo $boton = "
         <a class='btn__insert' href='".BASE_URL."productform'>Agregar producto</a>";
+        }
         ?>
     </section>
     <?php
@@ -193,24 +206,54 @@ function HTMLformProduct($Producto = null, $Categorias){
 
 // funcion que muestra un formulario de registro y login para el usuario
 function HTMLformLogin(){
-    ?>
-    <section class="login__container">
+    HTMLstart();
+    $loginform = "
+    <section class='login__container'>
         <h2>Login</h2>
-        <form class="form__login" action="" method="POST">
+        <form class='form__login' action='".BASE_URL."enter' method='POST'>
             <div>
-                <label for="email">Correo electrónico:</label>
-                <input type="text" name="correo" placeholder="Ingresa tu correo" required autocomplete="false">
+                <label for='email'>Correo electrónico:</label>
+                <input type='text' name='email' placeholder='Ingresa tu correo' required autocomplete='false'>
             </div>
             <div>
-                <label for="pass">Contraseña:</label>
-                <input type="password" name="pass" placeholder="Ingresa tu contraseña" required>
+                <label for='password'>Contraseña:</label>
+                <input type='password' name='password' placeholder='Ingresa tu contraseña' required>
             </div>
             <div>
-                <button class="btn__insert">Registrarse</button>
+                <button type='submit' class='btn__insert'>Ingresar</button>
             </div>
         </form>
-    </section>
-    <?php
+    </section>";
+    echo $loginform;
+    HTMLend();
+}
+
+function HTMLprofile($User = null){
+    HTMLstart();
+    $profile = "
+    <section class='login__container'>
+        <h2>Login</h2>
+        <form class='form__login' method='POST'>
+            <div>
+                <label for='email'>Correo electrónico:</label>
+                <label>$User->email</label>
+            </div>
+            <div>
+                <label for='name'>Nombre:</label>
+                <label>$User->nombre</label>
+            </div>
+            <div>
+                <label for='apellido'>Apellido:</label>
+                <label>$User->apellido</label>
+            </div>
+            <div>
+                <label for='admin'>Admin</label>
+                <input type='checkbox' ". ($User ? ($User->admin == 1 ? 'checked' : '') : '') ." disabled>
+            </div>
+        </form>
+    </section>";
+    echo $profile;
+    HTMLend();
 }
 
 // pagina que muestra error en la carga de datos para cualquiera de las acciones del usuario que no resulten correctamente

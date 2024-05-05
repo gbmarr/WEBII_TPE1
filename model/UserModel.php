@@ -9,11 +9,17 @@ class UserModel{
         $this->Database = new Database();
     }
 
-    function getUser($email){
+    function getUser($id = null, $email = null){
         try {
-            $query = "SELECT `idUsuario`, `email`, `password`, `nombre`, `apellido`, `admin` FROM `usuarios` WHERE `email` = ?";
-            $params = [$email];
-            $sentencia = $this->Database->executeQuery($query, $params[0]);
+            if($email != null){
+                $query = "SELECT `idUsuario`, `email`, `password`, `nombre`, `apellido`, `admin` FROM `usuarios` WHERE `email` = ?";
+                $params = [$email];
+                $sentencia = $this->Database->executeQuery($query, $params);
+            }elseif($id != null){
+                $query = "SELECT `idUsuario`, `email`, `password`, `nombre`, `apellido`, `admin` FROM `usuarios` WHERE `idUsuario` = ?";
+                $params = [$id];
+                $sentencia = $this->Database->executeQuery($query, $params[0]);
+            }
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
             if($resultado){

@@ -13,7 +13,8 @@ class ConfigApp{
         'edit' => "editarProducto",
         'detail' => "verProducto",
         'delete' => "eliminarProducto",
-        'login' => "loguearUsuario",
-        'profile' => "verPerfil"
+        'login' => "cargarFormUsuario",
+        'profile' => "verPerfil",
+        'enter' => "iniciarSesion"
     ];
 }
