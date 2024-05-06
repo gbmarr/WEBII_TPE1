@@ -62,7 +62,7 @@ function HTMLcardList($Productos){
                     $card .= $Producto->stock == 1 ? "<i class='bx bx-check-circle'></i>" : "<i class='bx bx-x-circle'></i>";
                 $card .= "
                 </div>
-                <div>
+                <div class='card__btndetail__container'>
                 <a class='btn__detail' href='detail/$Producto->idProducto'>Ver Detalle</a>
                 <p class='card__price'>$$Producto->precio</p>
                 </div>
@@ -187,8 +187,12 @@ function HTMLformProduct($Producto = null, $Categorias){
                 <div>
                 <label for='stock'>Stock:</label>
                 <div class='div__radiobtn'>
-                <input type='radio' value='1' name='stock' ". ($Producto ? ($Producto->stock == 1 ? 'checked' : '') : '') ." >Disponible
-                <input type='radio' value='0' name='stock' ". ($Producto ? ($Producto->stock == 0 ? 'checked' : '') : '') ." >No disponible
+                    <div>
+                        <input type='radio' value='1' name='stock' ". ($Producto ? ($Producto->stock == 1 ? 'checked' : '') : '') ." ><p>Disponible</p>
+                    </div>
+                    <div>
+                        <input type='radio' value='0' name='stock' ". ($Producto ? ($Producto->stock == 0 ? 'checked' : '') : '') ." ><p>No disponible</p>
+                    </div>
                 </div>
                 </div>
                 <div>
