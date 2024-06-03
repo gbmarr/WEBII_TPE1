@@ -23,9 +23,13 @@ class UserController{
         $this->view->loguearPerfil();
     }
 
-    function verPerfil($id){
-        $User = $this->model->getUser($id, null);
-        $this->view->verPerfil($User);
+    function verPerfil($id = null){
+        if($id != null){
+            $User = $this->model->getUser($id, null);
+            $this->view->verPerfil($User);
+        }else{
+            $this->cargarFormUsuario();
+        }
     }
 
     function iniciarSesion(){

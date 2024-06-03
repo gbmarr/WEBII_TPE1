@@ -7,6 +7,7 @@ require_once 'controller/UserController.php';
 require_once 'view/ProductView.php';
 
 // si no podemos utilizar objetos, en el if debemos llamar a cada acción en particular con if-elseif, if-elseif...
+$controller = new ProductController();
 
 function parseUrl($url){
     $arrDatos = explode('/',$url);
@@ -25,8 +26,6 @@ if(array_key_exists($action, ConfigApp::$ACTIONS)){
 
     if($method == 'verPerfil' || $method == 'cargarFormUsuario' || $method == 'iniciarSesion'){
         $controller = new UserController();
-    }else{
-        $controller = new ProductController();
     }
     
     

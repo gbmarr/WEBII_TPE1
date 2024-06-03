@@ -1,18 +1,36 @@
 <?php
-require_once 'templates/HTMLTemplates.php';
+require_once './libs/Smarty.class.php';
 
 class UserView{
 
+    function Header(){
+        $header = new Smarty();
+        $header->display("../templates/header.tpl");
+    }
+
+    function Footer(){
+        $footer = new Smarty();
+        $footer->display("../templates/footer.tpl");
+    }
+
     function verPerfil($User){
+        $this->Header();
         if($User){
-            HTMLprofile($User);
+            $perfil = new Smarty();
+            $perfil->assign("User", $User);
+            $perfil->display("../templates/profile.tpl");
         }else{
-            HTMLerrorPage();
+            $error = new Smarty();
+            $error->display("../templates/loginform.tpl");
         }
+        $this->Footer();
     }
 
     function loguearPerfil(){
-        HTMLformLogin();
+        $this->Header();
+        $login = new Smarty();
+        $login->display("../templates/loginform.tpl");
+        $this->Footer();
     }
 
 }
