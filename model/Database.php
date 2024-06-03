@@ -1,4 +1,5 @@
 <?php
+require_once './config/ConfigApp.php';
 
 class Database{
     private $host;
@@ -8,10 +9,10 @@ class Database{
     private $conn;
     
     function Connect(){
-        $this->host = 'localhost';
-        $this->dbName = 'webii_productsdb;charset=utf8';
-        $this->dbUser = 'root';
-        $this->dbPass = '';
+        $this->host = SQL_HOST;
+        $this->dbName = SQL_DBNAME;
+        $this->dbUser = SQL_USER;
+        $this->dbPass = SQL_PASS;
         try{
             $conexion = "mysql:host={$this->host};dbname={$this->dbName}";
             $this->conn = new PDO($conexion, $this->dbUser, $this->dbPass);
