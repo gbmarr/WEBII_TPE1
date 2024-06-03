@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-06-03 23:09:48
+/* Smarty version 4.5.3, created on 2024-06-04 01:03:53
   from 'C:\xampp\htdocs\WEBII_TPE1\templates\productform.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_665e311cd14b35_29151177',
+  'unifunc' => 'content_665e4bd9101327_69681471',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bbe8401f12ae94b7d9dbc213cbadc4c860ff6f80' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEBII_TPE1\\templates\\productform.tpl',
-      1 => 1717448305,
+      1 => 1717455784,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_665e311cd14b35_29151177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_665e4bd9101327_69681471 (Smarty_Internal_Template $_smarty_tpl) {
 ?><section class="product__container">
 <form class="form__product" action="<?php echo BASE_URL;?>
 /<?php if (($_smarty_tpl->tpl_vars['Producto']->value)) {?> edit <?php } else { ?> add <?php }?>" method="POST">
@@ -82,8 +82,8 @@ if ($_prefixVariable4 == 0) {?> checked <?php } else { ?> <?php }?>) <?php } els
                 </div>
                 <div>
                 <label for="price">Precio:</label>
-                <input type="number" name="price" value="<?php if (($_smarty_tpl->tpl_vars['Producto']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['Producto']->value->precio;?>
- <?php } else { ?> <?php }?>">
+                <input type="number" name="price" value=<?php if (($_smarty_tpl->tpl_vars['Producto']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['Producto']->value->precio;?>
+ <?php } else { ?> <?php }?>>
                 </div>
                 <div>
                 <button type="submit" class="btn__insert">Guardar cambios</button>

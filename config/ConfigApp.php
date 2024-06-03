@@ -18,3 +18,6 @@ class ConfigApp{
         'enter' => "iniciarSesion"
     ];
 }
+
+// constantes pertenecientes a la DB
+

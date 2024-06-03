@@ -14,8 +14,9 @@ class UserView{
     }
 
     function verPerfil($User){
+        session_start();
         $this->Header();
-        if($User){
+        if(isset($_SESSION["User"]) && $User){
             $perfil = new Smarty();
             $perfil->assign("User", $User);
             $perfil->display("../templates/profile.tpl");

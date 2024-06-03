@@ -34,7 +34,7 @@
                 </div>
                 <div>
                 <label for="price">Precio:</label>
-                <input type="number" name="price" value="{if ($Producto)} {$Producto->precio} {else if} {/if}">
+                <input type="number" name="price" value={if ($Producto)} {$Producto->precio} {else if} {/if}>
                 </div>
                 <div>
                 <button type="submit" class="btn__insert">Guardar cambios</button>
