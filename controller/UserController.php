@@ -62,18 +62,22 @@ class UserController{
 
     function iniciarSesion(){
         session_start();
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     
             $email = $_POST['email'];
             $password = $_POST['password'];
-               
             $Logueado = $this->model->getUser(null, $email);
-
+            
+            
             if ($Logueado) {
+                $userModel = new UserModel();
+                $userModel->updatePassword($email, $password); 
                 echo "Usuario encontrado: " . $Logueado->email . "<br>";
                 echo "Hash en la base de datos: " . $Logueado->password . "<br>";
                 echo "Contraseña ingresada: " . $password . "<br>";
                 $hashedPassword = $Logueado->password;
+                
                 if (password_verify($password, $hashedPassword)) {
                     echo "entra";    
                     $_SESSION["User"] = $Logueado->email;

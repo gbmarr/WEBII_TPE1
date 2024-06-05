@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-06-05 19:16:05
+/* Smarty version 4.5.3, created on 2024-06-05 23:48:51
   from 'C:\xampp\htdocs\WEBII_TPE1\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_66609d55c26b29_48047625',
+  'unifunc' => 'content_6660dd43a9b445_01854416',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a5c1eb64e6dceff826c003d577f5ec2cd0d80a52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEBII_TPE1\\templates\\header.tpl',
-      1 => 1717607760,
+      1 => 1717624128,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66609d55c26b29_48047625 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6660dd43a9b445_01854416 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
     <html lang="en">
     <head>
@@ -47,8 +47,7 @@ function content_66609d55c26b29_48047625 (Smarty_Internal_Template $_smarty_tpl)
                 <li class="navbar__list__item"><a href="<?php echo BASE_URL;?>
 /list">Productos</a></li>
                                     <li class="navbar__list__item"><a href="<?php echo BASE_URL;?>
-/profile/<?php echo $_smarty_tpl->tpl_vars['User']->value->id;?>
-">Perfil</a></li>
+/profile">Perfil</a></li>
                                     <li class="navbar__list__item"><a href="<?php echo BASE_URL;?>
 /login">Login</a></li>
                             </ul>

@@ -141,5 +141,3 @@ class UserModel{
     
 }
 
-$userModel = new UserModel();
-$userModel->updatePassword('test@example.com', 'password123');
