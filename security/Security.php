@@ -3,7 +3,20 @@
 class Security {
 
     function PassVerify($pass, $hashpass){
+        $pass = password_hash($pass, PASSWORD_ARGON2I);
+        $hashpass = password_hash($pass, PASSWORD_ARGON2I);
+        
+
         if(password_verify($pass, $hashpass)){
+            return true;
+        }else{
+            return false;
+        }
+        return false;
+    }
+
+    function sessionExists($User = null){
+        if($User){
             return true;
         }else{
             return false;

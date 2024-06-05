@@ -27,30 +27,34 @@ class UserController{
     }
 
     function verPerfil($id = null){
-        if($id != null){
-            $User = $this->model->getUser($id, null);
-            $this->view->verPerfil($User);
-        }else{
-            $this->cargarFormUsuario();
+        session_start();
+        $session = $this->security->sessionExists($_SESSION["User"]);
+        if($session != null){
+            if($id != null){
+                $User = $this->model->getUser($id, null);
+                $this->view->verPerfil($User);
+            }else{
+                header("Location", BASE_URL);
+            }
         }
     }
 
     function iniciarSesion(){
-        session_start();
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
             $User = new User();
             $User->email = $_POST['email'];
-            $User->password = password_hash($_POST['password'], PASSWORD_ARGON2I);
-
+            $User->password = $_POST['password'];
+            
             $Logueado = $this->model->getUser(null, $User->email);
             
-            if($this->security->PassVerify($User->password, $Logueado->password)) {
+            $existe = $this->security->PassVerify($User->password, $Logueado->password);
+            
+            if($existe) {
+                session_start();
                 $_SESSION["User"] = $User->email;
-                // header("Location", BASE_URL);
                 $Productos = $this->productmodel->getProducts();
-                $this->productview->verListado($Productos, $Logueado->idUsuario);
+                $this->productview->verCards($Productos);
             }else{
-                echo "acá quedó (x-x)";
                 header("Location", BASE_URL."/login");
             }
         }

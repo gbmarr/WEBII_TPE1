@@ -13,10 +13,9 @@ class UserView{
         $footer->display("../templates/footer.tpl");
     }
 
-    function verPerfil($User){
-        session_start();
+    function verPerfil($User = null){
         $this->Header();
-        if(isset($_SESSION["User"]) && $User){
+        if(isset($User)){
             $perfil = new Smarty();
             $perfil->assign("User", $User);
             $perfil->display("../templates/profile.tpl");
