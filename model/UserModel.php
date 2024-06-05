@@ -18,7 +18,7 @@ class UserModel{
             }elseif($id != null){
                 $query = "SELECT `idUsuario`, `email`, `password`, `nombre`, `apellido`, `admin` FROM `usuarios` WHERE `idUsuario` = ?";
                 $params = [$id];
-                $sentencia = $this->Database->executeQuery($query, $params[0]);
+                $sentencia = $this->Database->executeQuery($query, $params);
             }
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
@@ -121,4 +121,25 @@ class UserModel{
             return false;
         }
     }
+
+    function updatePassword($email, $newPassword) {
+        try {
+            $hashedPassword = password_hash($newPassword, PASSWORD_ARGON2I);
+            $query = "UPDATE `usuarios` SET `password`= ? WHERE `email` = ?";
+            $params = [$hashedPassword, $email];
+            $sentencia = $this->Database->executeQuery($query, $params);
+            if ($sentencia) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 }
+
+$userModel = new UserModel();
+$userModel->updatePassword('test@example.com', 'password123');

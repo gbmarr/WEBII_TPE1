@@ -21,7 +21,7 @@
                 <li class="navbar__list__item"><a href="{BASE_URL}">Inicio</a></li>
                 <li class="navbar__list__item"><a href="{BASE_URL}/list">Productos</a></li>
                 {* {if ($id != null)} *}
-                    <li class="navbar__list__item"><a href="{BASE_URL}/profile">Perfil</a></li>
+                    <li class="navbar__list__item"><a href="{BASE_URL}/profile/{$User->id}">Perfil</a></li>
                 {* {else} *}
                     <li class="navbar__list__item"><a href="{BASE_URL}/login">Login</a></li>
                 {* {/if} *}

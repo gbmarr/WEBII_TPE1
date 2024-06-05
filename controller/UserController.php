@@ -1,5 +1,5 @@
 <?php
-require_once './security/Security.php';
+//require_once './security/Security.php';
 require_once './view/UserView.php';
 require_once './view/ProductView.php';
 require_once './model/ProductModel.php';
@@ -39,7 +39,7 @@ class UserController{
         }
     }
 
-    function iniciarSesion(){
+    /*function iniciarSesion(){
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
             $User = new User();
             $User->email = $_POST['email'];
@@ -57,6 +57,41 @@ class UserController{
             }else{
                 header("Location", BASE_URL."/login");
             }
+        }
+    }*/
+
+    function iniciarSesion(){
+        session_start();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+    
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+               
+            $Logueado = $this->model->getUser(null, $email);
+
+            if ($Logueado) {
+                echo "Usuario encontrado: " . $Logueado->email . "<br>";
+                echo "Hash en la base de datos: " . $Logueado->password . "<br>";
+                echo "Contraseña ingresada: " . $password . "<br>";
+                $hashedPassword = $Logueado->password;
+                if (password_verify($password, $hashedPassword)) {
+                    echo "entra";    
+                    $_SESSION["User"] = $Logueado->email;
+                    $_SESSION['user_id'] = $Logueado->idUsuario;
+                    $_SESSION['user_admin'] = $Logueado->admin;
+    
+                    $Productos = $this->productmodel->getProducts();
+                    $this->productview->verListado($Productos, $Logueado->idUsuario);
+                } else {
+                    echo "Contraseña incorrecta";
+                    $this->view->mostrarError("Usuario o contraseña incorrectos");
+                }
+            } else {
+                echo "Usuario no encontrado";
+                $this->view->mostrarError("Usuario o contraseña incorrectos");
+            }
+        } else {
+            $this->view->mostrarError("Falta el correo electrónico o la contraseña");
         }
     }
 }
