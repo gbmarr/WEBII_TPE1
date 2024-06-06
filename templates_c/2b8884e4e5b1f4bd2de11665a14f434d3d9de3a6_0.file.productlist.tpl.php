@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-06-03 22:13:54
+/* Smarty version 4.5.3, created on 2024-06-06 16:27:28
   from 'C:\xampp\htdocs\WEBII_TPE1\templates\productlist.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_665e2402c12425_67512390',
+  'unifunc' => 'content_6661c7509a7aa0_62706307',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2b8884e4e5b1f4bd2de11665a14f434d3d9de3a6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEBII_TPE1\\templates\\productlist.tpl',
-      1 => 1717445632,
+      1 => 1717684041,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_665e2402c12425_67512390 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6661c7509a7aa0_62706307 (Smarty_Internal_Template $_smarty_tpl) {
 ?><section class="listproduct__container">
         <table>
             <thead>
@@ -31,8 +31,8 @@ function content_665e2402c12425_67512390 (Smarty_Internal_Template $_smarty_tpl)
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Precio</th>
-                                            <th>Acciones</th>
-                                    </tr>
+                    <th>Acciones</th>                   
+                </tr>
             </thead>
             <tbody>
                 <?php
@@ -69,7 +69,8 @@ $_smarty_tpl->tpl_vars['Producto']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
-                    <a class="btn__insert" href="<?php echo BASE_URL;?>
+                <a class="btn__insert" href="<?php echo BASE_URL;?>
 /productform">Agregar producto</a>
+            
         </section><?php }
 }

@@ -8,9 +8,10 @@
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Precio</th>
-                    {* {if({$admin} == 1)} *}
+                    {* {if({$admin} == 1)} 
                         <th>Acciones</th>
-                    {* {/if} *}
+                     {/if} *}
+                    
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
             </tbody>
         </table>
         {* {if ($admin == 1)} *}
-            <a class="btn__insert" href="{BASE_URL}/productform">Agregar producto</a>
+        <a class="btn__insert" href="{BASE_URL}/productform">Agregar producto</a>
+            
         {* {/if} *}
 </section>
