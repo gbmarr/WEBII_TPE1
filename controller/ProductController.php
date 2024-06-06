@@ -26,11 +26,12 @@ class ProductController{
     }
 
     function mostrarLista(){
-        $Productos = $this->model->getProducts();
         session_start();
+        $Productos = $this->model->getProducts();
         $session = $this->security->sessionExists($_SESSION["User"]);
+        $admin = isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : 0;
         if($session != null){
-            $this->view->verListado($Productos);
+            $this->view->verListado($Productos, $admin);
         }else{
             $this->view->verCards($Productos);
         }

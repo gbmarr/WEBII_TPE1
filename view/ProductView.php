@@ -32,11 +32,12 @@ class ProductView{
         $this->Footer();
     }
 
-    function verListado($Productos){
+    function verListado($Productos, $admin){
         $this->Header();
         if($Productos != null){
             $list = new Smarty();
             $list->assign("Productos", $Productos);
+            $list->assign("admin", $admin);
             $list->display("../templates/productlist.tpl");
         }else{
             $this->ErrorPage();

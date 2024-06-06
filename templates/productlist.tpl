@@ -8,10 +8,12 @@
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Precio</th>
-                    {* {if({$admin} == 1)} 
+                     {if $admin == 1} 
+
                         <th>Acciones</th>
-                     {/if} *}
-                    
+
+                     {/if} 
+
                 </tr>
             </thead>
             <tbody>
@@ -27,18 +29,18 @@
                             <td><i class="bx bx-x-circle"></i></td>
                         {/if}
                         <td>{$Producto->precio}</td>
-                        {* {if ($admin === 1)} *}
+                         {if ($admin == 1)} 
                             <td class="listproduct__btncontainer">
                             <a class="btn__edit" href="productform/{$Producto->idProducto}">Editar</a>
                             <a class="btn__delete" href="delete/{$Producto->idProducto}">Eliminar</a>
                             </td>
-                        {* {/if} *}
+                         {/if} 
                     </tr>
                     {/foreach}
             </tbody>
         </table>
-        {* {if ($admin == 1)} *}
+         {if ($admin == 1)} 
         <a class="btn__insert" href="{BASE_URL}/productform">Agregar producto</a>
             
-        {* {/if} *}
+         {/if} 
 </section>
