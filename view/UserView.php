@@ -33,4 +33,12 @@ class UserView{
         $this->Footer();
     }
 
+    function mostrarError($Error){
+        $this->Header();
+        $pageError = new Smarty();
+        $pageError->assign("Error", $Error);
+        $pageError->display("../templates/error.tpl");
+        $this->Footer();
+    }
+
 }

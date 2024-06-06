@@ -51,7 +51,7 @@ class UserController{
             
             if ($Logueado) {
                 $userModel = new UserModel();
-                $userModel->updatePassword($email, $password); 
+                $userModel->updatePassword($email, $password);
                 $hashedPassword = $Logueado->password;
                 
                 if (password_verify($password, $hashedPassword)) {
