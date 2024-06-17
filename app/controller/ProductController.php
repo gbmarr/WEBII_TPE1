@@ -18,24 +18,34 @@ class ProductController{
     function viewAllProductsAdmin(){
 
     }
+<<<<<<< HEAD
     
     function detailProduct($id){
 
     }
+=======
+>>>>>>> 0c780adb584576d4c599afd1f2649431c05ee36f
 
     function createProduct(){
 
     }
 
+<<<<<<< HEAD
     function storeProduct(){
 
     }
 
+=======
+>>>>>>> 0c780adb584576d4c599afd1f2649431c05ee36f
     function editProduct($id){
 
     }
 
+<<<<<<< HEAD
     function updateProduct(){
+=======
+    function detailProduct($id){
+>>>>>>> 0c780adb584576d4c599afd1f2649431c05ee36f
 
     }
 

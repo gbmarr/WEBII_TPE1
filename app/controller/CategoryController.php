@@ -13,18 +13,24 @@ class CategoryController{
 
     }
 
+<<<<<<< HEAD
     function storeCategory(){
 
     }
 
+=======
+>>>>>>> 0c780adb584576d4c599afd1f2649431c05ee36f
     function editCategory($id){
 
     }
 
+<<<<<<< HEAD
     function updateCategory($id){
         
     }
 
+=======
+>>>>>>> 0c780adb584576d4c599afd1f2649431c05ee36f
     function deleteCategory($id){
 
     }
