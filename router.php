@@ -16,26 +16,60 @@ switch ($param[0]) {
     case '':
     case 'home':
         // muestra el home con los productos en formato cards
+        $productController->viewAllProducts();
         break;
     case 'list':
         // muestra los productos en formato lista solo para usuarios admin
+        $productController->viewAllProductsAdmin();
         break;
     case 'add':
         // muestra formulario para agregar nuevo producto
+        $productController->createProduct();
         break;
     case 'edit':
         // muestra formulario para editar  producto existente
+        isset($param[1]) ? $productController->editProduct($param[1]) : $productController->errorProduct();
         break;
     case 'detail':
         // muestra vista de un solo producto
+        isset($param[1]) ? $productController->detailProduct($param[1]) : $productController->errorProduct();
         break;
     case 'delete':
         // elimina un producto existente
+        isset($param[1]) ? $productController->deleteProduct($param[1]) : $productController->errorProduct();
         break;
     case 'login':
         // muestra formulario de login para iniciar sesion
+        $authController->login();
+        break;
+    case 'logout':
+        $authController->logout();
+        break;
+    case 'auth':
+        $authController->authenticate();
+        break;
+    case 'category':
+        if (isset($param[1])){
+            switch($param[1]){
+                case 'add':
+                    $categoryController->createCategory();
+                    break;
+                case 'edit':
+                    isset($param[2]) ? $categoryController->editCategory($param[2]) : $categoryController->errorCategory();
+                    break;
+                case 'delete':
+                    isset($param[2]) ? $categoryController->deleteCategory($param[2]) : $categoryController->errorCategory();
+                    break;
+                default:
+                $categoryController->errorCategory();
+                break;
+            }
+        }else{
+            $categoryController->errorCategory();
+        }
         break;
     default:
         // redirige a la pantalla home
+        $productController->viewAllProducts();
         break;
 }
