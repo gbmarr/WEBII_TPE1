@@ -1,0 +1,74 @@
+/* PALETA DE COLORES DE LA APLICACIÓN */
+:root {
+    --black-base: #171717;
+    --blue-base: #123abd;
+    --black-mid: #4f4f4f;
+    --blue-mid: #2b7eff;
+    --black-light: #e7e7e7;
+    --blue-light: #c8d1f5;
+}
+
+/* ESTILOS GENERALES DE LA APLICACIÓN */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    font: 16px 'Barlow', sans-serif;
+    color: var(--black-light);
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(var(--black-base) 85%, var(--blue-base));
+}
+
+h1 {
+    font: 2em 'Alfa Slab One', sans-serif;
+    color: var(--blue-mid);
+    margin: .5em;
+    width: 40%;
+}
+
+/* ESTILOS DEL HEADER */
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 60%;
+    margin: auto;
+}
+
+.navbar__list {
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar__list__item a {
+    color: var(--black-mid);
+    font: bold 1.2em 'Barlow', sans-serif;
+}
+
+/* ESTILOS DEL MAIN */
+
+/* ESTILOS DEL FOOTER */
+.footer {
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--black-base);
+}
+
+.footer__text {
+    color: var(--blue-mid);
+    text-align: center;
+    font-style: italic;
+    margin: auto;
+}
