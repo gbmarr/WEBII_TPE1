@@ -2,18 +2,18 @@
 require_once './config/config.php';
 
 class Model{
-    private $db;
+    private $database;
     private $conn;
 
     function __construct(){
-        $this->conn = $this->getConnection();
-    }
-
-    function getConnection(){
         try {
-            
-        } catch (Exception $e) {
-            return $e->getMessage();
+
+            $this->conn = "mysql:host=".SQL_HOST.";dbname=".SQL_DBNAME.";charset=utf8";
+            $this->database = new PDO($this->conn, SQL_USER, SQL_PASS);
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 }
