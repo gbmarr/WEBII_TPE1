@@ -16,4 +16,14 @@ class Model{
             echo $e->getMessage();
         }
     }
+
+    function executeQuery($query, $params = []){
+        try {
+            $action = $this->database->prepare($query);
+            $action->execute($params);
+            return $action;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
