@@ -8,6 +8,11 @@ class ProductView extends View{
         $this->smarty->display('products/productCards.tpl');
     }
 
+    function showAllProductsAdmin($products){
+        $this->smarty->assign('products', $products);
+        $this->smarty->display('products/productListAdmin.tpl');
+    }
+
     function showProductDetail($product){
         $this->smarty->assign('product', $product);
         $this->smarty->display('products/productDetail.tpl');

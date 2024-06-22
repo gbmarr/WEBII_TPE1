@@ -16,14 +16,14 @@ class ProductModel extends Model {
         return $product->fetch(PDO::FETCH_OBJ);
     }
 
-    function addProduct($nombre, $descripcion, $idCategoria, $stock, $precio){
-        $query = "INSERT INTO `productos` (`nombre`, `descripcion`, `idCategoria`, `stock`, `precio`) VALUES (?, ?, ?, ?, ?)";
-        $this->executeQuery($query, [$nombre, $descripcion, $idCategoria, $stock, $precio]);
+    function addProduct($nombre, $descripcion, $idCategoria, $precio, $stock){
+        $query = "INSERT INTO `productos` (`nombre`, `descripcion`, `idCategoria`, `precio`, `stock`) VALUES (?, ?, ?, ?, ?)";
+        $this->executeQuery($query, [$nombre, $descripcion, $idCategoria, $precio, $stock]);
     }
 
-    function updateProduct($idProducto, $nombre, $idCategoria, $stock, $precio){
-        $query = "UPDATE `productos` SET `nombre` = ?, `descripcion` = ?, `idCategoria` = ?, `stock` = ?, `precio` = ? WHERE `idProducto` = ?";
-        $this->executeQuery($query, [$nombre, $idCategoria, $stock, $precio, $idProducto]);
+    function updateProduct($idProducto, $nombre, $descripcion, $idCategoria, $precio, $stock){
+        $query = "UPDATE `productos` SET `nombre` = ?, `descripcion` = ?, `idCategoria` = ?, `precio` = ?, `stock` = ?, `stock` = ? WHERE `idProducto` = ?";
+        $this->executeQuery($query, [$nombre, $descripcion, $idCategoria, $precio, $stock, $idProducto]);
     }
 
     function deleteProduct($idProducto){
