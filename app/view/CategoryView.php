@@ -10,6 +10,4 @@ class CategoryView{
     function showCategoryForm($category = null){
 
     }
-
-    
 }
