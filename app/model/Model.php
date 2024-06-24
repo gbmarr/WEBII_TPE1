@@ -1,5 +1,5 @@
 <?php
-require_once './config/config.php';
+require_once './config/ConfigApp.php';
 
 class Model{
     protected $database;
@@ -11,7 +11,6 @@ class Model{
             $this->database = new PDO($this->conn, SQL_USER, SQL_PASS);
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            
 
         } catch (PDOException $e) {
             echo $e->getMessage();

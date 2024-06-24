@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-06-19 21:38:58
+/* Smarty version 4.5.3, created on 2024-06-24 19:29:10
   from 'C:\xampp\htdocs\WEBII_TPE1\templates\layouts\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_667333d2d07cf2_94012043',
+  'unifunc' => 'content_6679ace63c35b1_10340198',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8765e9b5e64ac8c8f27ba79c3ce04be2b5ab32f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEBII_TPE1\\templates\\layouts\\head.tpl',
-      1 => 1718825937,
+      1 => 1719249061,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_667333d2d07cf2_94012043 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6679ace63c35b1_10340198 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
-
 <head>
 	<title>Stock Product</title>
 	<meta charset="UTF-8">
@@ -36,19 +35,33 @@ function content_667333d2d07cf2_94012043 (Smarty_Internal_Template $_smarty_tpl)
     <!-- styles -->
     <link rel="stylesheet" href="./styles/styles.css">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Product App</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<header class="header">
+<header>
     <h1>Product App</h1>
-    <nav class="navbar">
-        <ul class="navbar__list">
-            <li class="navbar__list__item"><a href="">Inicio</a></li>
-            <li class="navbar__list__item"><a href="">Productos</a></li>
-            <li class="navbar__list__item"><a href="">Perfil</a></li>
-            <li class="navbar__list__item"><a href="">Login</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="<?php echo BASE_URL;?>
+home">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL;?>
+home">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL;?>
+list">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL;?>
+category">Categorias</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL;?>
+login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL;?>
+logout">Logout</a></li>
+            </ul>
+        </div>
     </nav>
 </header>
-<main class="main__container"><?php }
+<main class="container mt-4"><?php }
 }

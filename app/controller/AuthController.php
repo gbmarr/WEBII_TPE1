@@ -1,5 +1,5 @@
 <?php
-require_once 'add/view/AuthView.php';
+require_once 'app/view/AuthView.php';
 
 class AuthController{
     private $view;

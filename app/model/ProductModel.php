@@ -7,7 +7,7 @@ class ProductModel extends Model {
     function getAllProducts(){
         $query = "SELECT * FROM `productos`";
         $products = $this->executeQuery($query);
-        return $products->fetchAll(PDO::FETCH_OBJ);
+        return $products->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getProductByID($idProducto){
