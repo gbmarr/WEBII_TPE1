@@ -5,29 +5,29 @@ class CategoryModel extends Model {
 
 
     function getAllCategories(){
-        $query = "SELECT `idCat`, `descripcionCat` FROM `categoria`";
+        $query = "SELECT `idcat`, `name` FROM `categoria`";
         $categories = $this->executeQuery($query);
         return $categories->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getCategoryByID($id){
-        $query = "SELECT `idCat`, `descripcionCat` FROM `categoria` WHERE `idCat` = ?";
+        $query = "SELECT `idcat`, `name` FROM `categories` WHERE `idcat` = ?";
         $category = $this->executeQuery($query, [$id]);
         return $category->fetch(PDO::FETCH_OBJ);
     }
 
     function addCategory($newCategory){
-        $query = "INSERT INTO `categoria` (`descripcionCat`) VALUES (?)";
+        $query = "INSERT INTO `categoria` (`name`) VALUES (?)";
         $this->executeQuery($query, [$newCategory]);
     }
 
     function updateCategory($id, $newName){
-        $query = "UPDATE `categoria` SET `descripcionCat` = ? WHERE `idCat` = ?";
+        $query = "UPDATE `categoria` SET `name` = ? WHERE `idcat` = ?";
         $this->executeQuery($query, [$newName, $id]);
     }
 
     function deleteCategory($id){
-        $query = "DELETE FROM `categoria` WHERE `idCat` = ?";
+        $query = "DELETE FROM `categoria` WHERE `idcat` = ?";
         $this->executeQuery($query, [$id]);
     }
 }
