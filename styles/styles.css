@@ -1,15 +1,15 @@
 /* PALETA DE COLORES DE LA APLICACIÓN */
-:root {
+/* :root {
     --black-base: #171717;
     --blue-base: #123abd;
     --black-mid: #4f4f4f;
     --blue-mid: #2b7eff;
     --black-light: #e7e7e7;
     --blue-light: #c8d1f5;
-}
+} */
 
 /* ESTILOS GENERALES DE LA APLICACIÓN */
-*{
+/* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,9 +18,9 @@
     color: var(--black-light);
     list-style: none;
     text-decoration: none;
-}
+} */
 
-body {
+/* body {
     height: 100vh;
     background: linear-gradient(var(--black-base) 85%, var(--blue-base));
 }
@@ -30,10 +30,10 @@ h1 {
     color: var(--blue-mid);
     margin: .5em;
     width: 40%;
-}
+} */
 
 /* ESTILOS DEL HEADER */
-.header {
+/* .header {
     display: flex;
     flex-direction: row;
 }
@@ -54,12 +54,12 @@ h1 {
 .navbar__list__item a {
     color: var(--black-mid);
     font: bold 1.2em 'Barlow', sans-serif;
-}
+} */
 
 /* ESTILOS DEL MAIN */
 
 /* ESTILOS DEL FOOTER */
-.footer {
+/* .footer {
     padding: 1em;
     position: fixed;
     bottom: 0;
@@ -71,4 +71,4 @@ h1 {
     text-align: center;
     font-style: italic;
     margin: auto;
-}
+} */
