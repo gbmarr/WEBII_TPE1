@@ -26,9 +26,17 @@ switch ($param[0]) {
         // muestra formulario para agregar nuevo producto
         $productController->createProduct();
         break;
+    case 'store':
+        // almacena el nuevo producto
+        $productController->storeProduct();
+        break;
     case 'edit':
         // muestra formulario para editar  producto existente
         isset($param[1]) ? $productController->editProduct($param[1]) : $productController->errorProduct();
+        break;
+    case 'update':
+        // actualiza el producto
+        isset($params[1]) ? $productController->updateProduct($params[1]) : $productController->errorProduct();
         break;
     case 'detail':
         // muestra vista de un solo producto
@@ -46,7 +54,7 @@ switch ($param[0]) {
         $authController->logout();
         break;
     case 'auth':
-        $authController->authenticate();
+        // $authController->authenticate();
         break;
     case 'category':
         if (isset($param[1])){
@@ -54,8 +62,14 @@ switch ($param[0]) {
                 case 'add':
                     $categoryController->createCategory();
                     break;
+                case 'storecat':
+                    $categoryController->storeCategory();
+                    break;
                 case 'edit':
                     isset($param[2]) ? $categoryController->editCategory($param[2]) : $categoryController->errorCategory();
+                    break;
+                case 'updatecat':
+                    isset($param[2]) ? $categoryController->updateCategory($param[2]) : $categoryController->errorCategory();
                     break;
                 case 'delete':
                     isset($param[2]) ? $categoryController->deleteCategory($param[2]) : $categoryController->errorCategory();
