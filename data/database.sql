@@ -1,13 +1,13 @@
-CREATE DATABASE IF NOT EXISTS webii_productsTPE;
-USE webii_productsTPE;
+CREATE DATABASE IF NOT EXISTS webii_productstpe;
+USE webii_productstpe;
 
--- Table categories
+-- Tabla categories
 CREATE TABLE IF NOT EXISTS categories (
     idcat INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
 
--- Table products
+-- Tabla products
 CREATE TABLE IF NOT EXISTS products (
     idproduct INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS products (
     FOREIGN KEY (idcategory) REFERENCES categories(idcat)
 );
 
--- Table users
+-- Tabla users
 CREATE TABLE IF NOT EXISTS users (
     iduser INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
@@ -29,20 +29,20 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Inserts en tabla CATEGORIES
-INSERT INTO categories (name) VALUES
-('Electrónica'),
-('Ropa'),
-('Hogar');
+-- INSERT INTO categories (name) VALUES
+-- ('Electrónica'),
+-- ('Ropa'),
+-- ('Hogar');
 
--- Inserts en tabla PRODUCTS
-INSERT INTO products (name, description, idcategory, stock, price) VALUES
-('Televisor', 'Televisor LED de 42 pulgadas', 1, TRUE, 200),
-('Camiseta', 'Camiseta de algodón 100%', 2, TRUE, 30.00),
-('Sofá', 'Sofá de 3 plazas color gris', 3, TRUE, 500.10),
-('Auriculares', 'Auriculares con cancelación de ruido', 1, TRUE, 1500);
+-- -- Inserts en tabla PRODUCTS
+-- INSERT INTO products (name, description, idcategory, stock, price) VALUES
+-- ('Televisor', 'Televisor LED de 42 pulgadas', 1, TRUE, 200),
+-- ('Camiseta', 'Camiseta de algodón 100%', 2, TRUE, 30.00),
+-- ('Sofá', 'Sofá de 3 plazas color gris', 3, TRUE, 500.10),
+-- ('Auriculares', 'Auriculares con cancelación de ruido', 1, TRUE, 1500);
 
--- Inserts en tabla USERS
-INSERT INTO users (name, surname, email, pass, admin) VALUES
-('Admin', 'User', 'admin@admin.com', 'webadmin', TRUE),
-('Gabriel', 'M', 'gb@web.com', 'password123', FALSE),
-('G', 'Marrero', 'gm@web.com', 'password456', FALSE);
+-- -- Inserts en tabla USERS
+-- INSERT INTO users (name, surname, email, pass, admin) VALUES
+-- ('Admin', 'User', 'admin@admin.com', 'webadmin', TRUE),
+-- ('Gabriel', 'M', 'gb@web.com', 'password123', FALSE),
+-- ('G', 'Marrero', 'gm@web.com', 'password456', FALSE);

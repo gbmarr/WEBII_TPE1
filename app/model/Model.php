@@ -7,8 +7,10 @@ class Model{
     function __construct(){
         try {
             $this->deploy();
+
             $data = "mysql:host=".SQL_HOST.";dbname=".SQL_DBNAME.";charset=utf8";
             $this->database = new PDO($data, SQL_USER, SQL_PASS);
+
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {
@@ -17,28 +19,56 @@ class Model{
     }
 
     private function deploy(){
-        $sql = file_get_contents('data/database.sql');
         try {
-            $data = "mysql:host=".SQL_HOST."";
-            $this->database = new PDO($data, SQL_USER, SQL_PASS);
-            $this->database->exec($sql);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
+            $pdo = new PDO("mysql:host=".SQL_HOST."", SQL_USER, SQL_PASS);
 
-    private function useDatabase(){
-        try {
-            $dbExist = $this->database->query("SHOW DATABASES LIKE '".SQL_DBNAME."'");
-            if(!($dbExist->rowCount() > 0)){
-                $this->database->exec("CREATE DATABASE ".SQL_DBNAME."");
+            $sql = file_get_contents('data/database.sql');
+
+            $pdo->exec($sql);
+
+            $this->database = new PDO("mysql:host=".SQL_HOST.";dbname=".SQL_DBNAME."", SQL_USER, SQL_PASS);
+            if($this->isTableEmpty('categories') && $this->isTableEmpty('products') && $this->isTableEmpty('users')){
+                $this->insertData();
             }
-            $this->database->query("USE ".SQL_DBNAME."");
 
         } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
+
+    private function isTableEmpty($table){
+        $sql = "SELECT COUNT(*) FROM $table";
+        $isCharge = $this->database->prepare($sql);
+        $isCharge->execute();
+        return $isCharge->fetchColumn() == 0;
+    }
+
+    private function insertData(){
+        try {
+            $this->database->exec(
+                "INSERT INTO `categories` (`name`) VALUES
+                ('Electrónica'),
+                ('Ropa'),
+                ('Hogar');"
+            );
+            $this->database->exec(
+                "INSERT INTO `products` (`name`, `description`, `idcategory`, `stock`, `price`) VALUES
+                ('Televisor', 'Televisor LED de 42 pulgadas', 1, TRUE, 200),
+                ('Camiseta', 'Camiseta de algodón 100%', 2, TRUE, 30.00),
+                ('Sofá', 'Sofá de 3 plazas color gris', 3, TRUE, 500.10),
+                ('Auriculares', 'Auriculares con cancelación de ruido', 1, TRUE, 1500);"
+            );
+            $this->database->exec("
+                INSERT INTO `users` (`name`, `surname`, `email`, `pass`, `admin`) VALUES
+                ('Admin', 'User', 'admin@admin.com', 'webadmin', TRUE),
+                ('Gabriel', 'M', 'gb@web.com', 'password123', FALSE),
+                ('G', 'Marrero', 'gm@web.com', 'password456', FALSE);
+            ");
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     function executeQuery($query, $params = []){
         try {
             $action = $this->database->prepare($query);
