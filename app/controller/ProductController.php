@@ -33,17 +33,17 @@ class ProductController{
 
     function createProduct(){
         $categories = $this->categoryModel->getAllCategories();
-        $this->view->showProductForm($categories);
+        $this->view->showProductForm(null, $categories);
     }
 
     function storeProduct(){
         $name = $_POST['name'];
         $description = $_POST['description'];
-        $price = $_POST['price'];
-        $idCategory = $_POST['idCategory'];
+        $idCategory = $_POST['idcategory'];
         $stock = $_POST['stock'];
+        $price = $_POST['price'];
         $this->productModel->addProduct($name, $description, $idCategory, $stock, $price);
-        header('Location: ' . BASE_URL . '');
+        header('Location: ' . BASE_URL . '/');
     }
 
     function editProduct($id){

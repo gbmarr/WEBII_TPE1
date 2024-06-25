@@ -21,7 +21,7 @@ class CategoryController{
     }
 
     function storeCategory(){
-        $categoryName = $_POST['category_name'];
+        $categoryName = $_POST['name'];
         $this->categoryModel->addCategory($categoryName);
         header('Location: ' . BASE_URL . '');
     }
@@ -32,7 +32,7 @@ class CategoryController{
     }
 
     function updateCategory($id){
-        $categoryName = $_POST['category_name'];
+        $categoryName = $_POST['name'];
         $this->categoryModel->updateCategory($id, $categoryName);
         header('Location: ' . BASE_URL . '');
     }
