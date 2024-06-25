@@ -32,11 +32,13 @@ switch ($param[0]) {
         break;
     case 'edit':
         // muestra formulario para editar  producto existente
-        isset($param[1]) ? $productController->editProduct($param[1]) : $productController->errorProduct();
+        $id = isset($param[1]) ? $param[1] : 0;
+        isset($id) ? $productController->editProduct($id) : $productController->createProduct();
         break;
     case 'update':
         // actualiza el producto
-        isset($params[1]) ? $productController->updateProduct($params[1]) : $productController->errorProduct();
+        $id = isset($param[1]) ? $param[1] : 0;
+        isset($id) ? $productController->updateProduct($id) : $productController->viewAllProducts();
         break;
     case 'detail':
         // muestra vista de un solo producto
@@ -62,7 +64,7 @@ switch ($param[0]) {
                 case 'add':
                     $categoryController->createCategory();
                     break;
-                case 'storecat':
+                case 'store':
                     $categoryController->storeCategory();
                     break;
                 case 'edit':
@@ -75,11 +77,11 @@ switch ($param[0]) {
                     isset($param[2]) ? $categoryController->deleteCategory($param[2]) : $categoryController->errorCategory();
                     break;
                 default:
-                $categoryController->errorCategory();
+                $categoryController->viewAllCategories();
                 break;
             }
         }else{
-            $categoryController->errorCategory();
+            $categoryController->viewAllCategories();
         }
         break;
     default:
