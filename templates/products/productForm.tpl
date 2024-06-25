@@ -7,10 +7,20 @@
         {/if}
     </h1>
     <!-- falta action  dentro de la etiqueta form -->
-    <form method="POST" class="col-6">
+    <form action="
+        {if $product}
+            {BASE_URL}/update/{$product->idproduct}
+        {else}
+            {BASE_URL}/store
+        {/if}
+    " method="POST" class="col-6">
         <div class="form-group">
             <label for="name">Nombre:</label>
             <input type="text" class="form-control" name="name" value="{$product->name|default:''}">
+        </div>
+        <div class="form-group">
+            <label for="name">Descripción:</label>
+            <textarea class="form-control" name="description" rows="5" >{$product->description|default:''}</textarea>
         </div>
         <div class="form-group">
             <label for="name">Precio:</label>
@@ -18,9 +28,9 @@
         </div>
         <div class="form-group">
             <label for="name">Categoría:</label>
-                <select name="category" class="form-control">
+                <select name="idcategory" class="form-control">
                     {foreach $categories as $category}
-                        <option value="{$category->name}"
+                        <option value="{$category->idcat}"
                             {if $product && $product->idcategory == $category->idcat}
                                 selected
                             {/if}>
@@ -30,18 +40,14 @@
                 </select>
         </div>
         <div class="form-group">
-            <label for="name">Descripción:</label>
-            <textarea class="form-control" name="description" rows="5" >{$product->description|default:''}</textarea>
-        </div>
-        <div class="form-group">
             <label for="name">Stock:</label>
-                <input type="radio" name="stock" value="true" {if $product->stock}checked{/if}/>
+                <input type="radio" name="stock" value="{if $product}{$product->stock}{/if}" {if $product && $product->stock}checked{/if}/>
                 <label for="true">Disponible</label>
-            <input type="radio" name="stock" value="false" {if !$product->stock}checked{/if}/>
+            <input type="radio" name="stock" value="{if $product}{$product->stock}{/if}" {if $product && !$product->stock}checked{/if}/>
                 <label for="false">No disponible</label>
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
             {if $product}
                 Actualizar
             {else}

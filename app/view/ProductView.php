@@ -18,7 +18,7 @@ class ProductView extends View{
         $this->smarty->display('products/productDetail.tpl');
     }
 
-    function showProductForm($product = null, $categories = []){
+    function showProductForm($product = null, $categories = null){
         $this->smarty->assign('product', $product ? $product : null);
         $this->smarty->assign('categories', $categories);
         $this->smarty->display('products/productForm.tpl');

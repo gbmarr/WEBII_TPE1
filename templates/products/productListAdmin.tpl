@@ -34,5 +34,6 @@
         {/foreach}
     </tbody>
     </table>
+    <a href="{BASE_URL}/add" class="btn btn-primary">Agregar</a>
 </div>
 {include '../layouts/footer.tpl'}

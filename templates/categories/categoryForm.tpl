@@ -7,8 +7,7 @@
             Crear categoría
         {/if}
     </h1>
-    <!-- falta agregar redirecciones -->
-    <form action="" method="POST">
+    <form action="{BASE_URL}/category/store" method="POST">
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" class="form-control" name="name" value="{$category->name|default:''}">
