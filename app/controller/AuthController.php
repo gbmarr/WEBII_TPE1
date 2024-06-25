@@ -19,9 +19,10 @@ class AuthController{
         $email = $_POST['email'];
         $password = $_POST['password'];
         $user = $this->user->getUserByEmail($email);
-        if($user && password_verify($password, $user->getPassword())){
+        if(isset($user) && $password === $user->pass){
+            session_start();
             $_SESSION['user'] = $user;
-            header('Location: ' . BASE_URL . 'home');
+            header('Location: ' . BASE_URL . '/home');
         }else{
             $this->view->showLoginForm();
         }
@@ -29,7 +30,7 @@ class AuthController{
 
     function checkAdmin(){
         session_start();
-        if(!isset($_SESSION['user']) || !$_SESSION['user']['admin']){
+        if(!isset($_SESSION['user']) || !($_SESSION['user']->admin)){
             header("Location: " . BASE_URL . "/");
         }
     }
