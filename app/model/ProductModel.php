@@ -22,7 +22,7 @@ class ProductModel extends Model {
     }
 
     function updateProduct($idproduct, $name, $description, $idcategory, $price, $stock){
-        $query = "UPDATE `products` SET `name` = ?, `description` = ?, `idcategory` = ?, `price` = ?, `stock` = ?, `stock` = ? WHERE `idproduct` = ?";
+        $query = "UPDATE `products` SET `name` = ?, `description` = ?, `idcategory` = ?, `price` = ?, `stock` = ? WHERE `idproduct` = ?";
         $this->executeQuery($query, [$name, $description, $idcategory, $price, $stock, $idproduct]);
     }
 
