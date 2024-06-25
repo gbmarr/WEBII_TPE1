@@ -56,7 +56,7 @@ switch ($param[0]) {
         $authController->logout();
         break;
     case 'auth':
-        // $authController->authenticate();
+        $authController->authenticate();
         break;
     case 'category':
         if (isset($param[1])){
