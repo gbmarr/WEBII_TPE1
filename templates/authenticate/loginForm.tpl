@@ -1,7 +1,7 @@
 {include '../layouts/head.tpl'}
 <h1 class="my-4">Iniciar Sesión</h1>
 <div class="col 6">
-    <form action="{BASE_URL}/authenticate" method="POST">
+    <form action="{BASE_URL}/auth" method="POST">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email">

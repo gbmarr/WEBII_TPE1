@@ -1,10 +1,12 @@
 <?php
+require_once 'Model.php';
 
-class UserModel{
+class UserModel extends Model{
 
-
-    function getUserByUserName($userName){
-
+    function getUserByEmail($email){
+        $query = "SELECT * FROM `users` WHERE email = ?";
+        $user = $this->executeQuery($query, [$email]);
+        return $user->fetch(PDO::FETCH_OBJ);
     }
 
     function addUser($userName, $pass){
