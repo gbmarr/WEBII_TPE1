@@ -2,8 +2,9 @@
 require_once './app/view/ProductView.php';
 require_once './app/model/ProductModel.php';
 require_once './app/model/CategoryModel.php';
+require_once './app/controller/AuthController.php';
 
-class ProductController{
+class ProductController extends AuthController{
 
     private $view;
     private $productModel;
@@ -22,6 +23,7 @@ class ProductController{
     }
 
     function viewAllProductsAdmin(){
+        $this->checkAdmin();
         $products = $this->productModel->getAllProducts();
         $this->view->showAllProductsAdmin($products);
     }
@@ -32,11 +34,13 @@ class ProductController{
     }
 
     function createProduct(){
+        $this->checkAdmin();
         $categories = $this->categoryModel->getAllCategories();
         $this->view->showProductForm(null, $categories);
     }
 
     function storeProduct(){
+        $this->checkAdmin();
         $name = $_POST['name'];
         $description = $_POST['description'];
         $idCategory = $_POST['idcategory'];
@@ -47,12 +51,14 @@ class ProductController{
     }
 
     function editProduct($id){
+        $this->checkAdmin();
         $product = $this->productModel->getProductByID($id);
         $categories = $this->categoryModel->getAllCategories();
         $this->view->showProductForm($product, $categories);
     }
 
     function updateProduct($id){
+        $this->checkAdmin();
         $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
@@ -63,6 +69,7 @@ class ProductController{
     }
 
     function deleteProduct($id){
+        $this->checkAdmin();
         $this->productModel->deleteProduct($id);
         header('Location: ' . BASE_URL . '');
     }
