@@ -12,4 +12,8 @@ class CategoryView extends View{
         $this->smarty->assign('category', $category);
         $this->smarty->display('categories/categoryForm.tpl');
     }
+
+    function showErrorCategory(){
+        $this->smarty->display('categories/error.tpl');
+    }
 }
