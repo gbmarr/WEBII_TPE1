@@ -28,7 +28,9 @@
                 <li class="nav-item"><a class="nav-link" href="{BASE_URL}/list">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{BASE_URL}/category">Categorias</a></li>
                 <li class="nav-item"><a class="nav-link" href="{BASE_URL}/login">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{BASE_URL}/logout">Logout</a></li>
+                {* {if $user} *}
+                    <li class="nav-item"><a class="nav-link" href="{BASE_URL}/logout">Logout</a></li>
+                {* {/if} *}
             </ul>
         </div>
     </nav>
