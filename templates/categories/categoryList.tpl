@@ -1,4 +1,5 @@
 {include '../layouts/head.tpl'}
+{include '../layouts/header.tpl'}
 <!-- faltan redirecciones -->
     <h1 class="my-4">Categorías</h1>
         <div class="list-group">

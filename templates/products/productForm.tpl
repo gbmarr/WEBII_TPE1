@@ -1,4 +1,5 @@
 {include '../layouts/head.tpl'}
+{include '../layouts/header.tpl'}
     <h1 class="my-4">
         {if $product}
             Editar producto

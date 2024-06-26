@@ -1,5 +1,5 @@
 {include '../layouts/head.tpl'}
-
+{include '../layouts/header.tpl'}
 <div class="container mt-5">
 <div class="row">
 {if ($products != null && !empty($products))}

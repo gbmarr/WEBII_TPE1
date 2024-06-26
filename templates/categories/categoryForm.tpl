@@ -1,4 +1,5 @@
 {include '../layouts/head.tpl'}
+{include '../layouts/header.tpl'}
 <div class="col 6">
     <h1 class="my-4">
         {if $category}
