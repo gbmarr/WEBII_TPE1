@@ -7,7 +7,13 @@ class View{
 
     function __construct(){
         $this->smarty = new Smarty();
-        // $this->smarty->assign('base', BASE_URL);
+
+        $user = isset($_SESSION['user']) ? true : false;
+        $admin = isset($_SESSION['admin']) ? true : false;
+
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('admin', $admin);
+        
         $this->smarty->setTemplateDir('templates/');
     }
 }
