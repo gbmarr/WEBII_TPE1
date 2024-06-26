@@ -1,6 +1,6 @@
 {include '../layouts/head.tpl'}
 {include '../layouts/header.tpl'}
-<h1 class="my-4">Iniciar Sesión</h1>
+<h3 class="my-4">Iniciar Sesión</h1>
 <div class="col 6">
     <form action="{BASE_URL}/auth" method="POST">
         <div class="form-group">

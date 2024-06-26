@@ -1,7 +1,7 @@
 {include '../layouts/head.tpl'}
 {include '../layouts/header.tpl'}
 <!-- faltan redirecciones -->
-    <h1 class="my-4">Categorías</h1>
+    <h3 class="my-4">Categorías</h3>
         <div class="list-group">
         {foreach from=$categories item=$category}
             <div class="list-group-item">

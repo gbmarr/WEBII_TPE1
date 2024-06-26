@@ -1,12 +1,12 @@
 {include '../layouts/head.tpl'}
 {include '../layouts/header.tpl'}
-    <h1 class="my-4">
+    <h3 class="my-4">
         {if $product}
             Editar producto
         {else}
             Crear producto
         {/if}
-    </h1>
+    </h3>
     <!-- falta action  dentro de la etiqueta form -->
     <form action="
         {if $product}

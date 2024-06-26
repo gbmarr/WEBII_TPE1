@@ -1,14 +1,14 @@
 {include '../layouts/head.tpl'}
 {include '../layouts/header.tpl'}
-<div class="col 6">
-    <h1 class="my-4">
+<div class="col-6">
+    <h3 class="my-4">
         {if $category}
             Editar categoría
         {else}
             Crear categoría
         {/if}
-    </h1>
-    <form action="{BASE_URL}/category/store" method="POST">
+    </h3>
+    <form class="container" action="{BASE_URL}/category/store" method="POST">
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" class="form-control" name="name" value="{$category->name|default:''}">
@@ -21,6 +21,7 @@
                     Crear
                 {/if}
             </button>
+        </div>
     </form>
 </div>
 {include '../layouts/footer.tpl'}

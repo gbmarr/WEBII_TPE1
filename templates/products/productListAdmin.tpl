@@ -1,7 +1,7 @@
 {include '../layouts/head.tpl'}
 {include '../layouts/header.tpl'}
 <div class="container mt-5">
-    <h1>Lista de productos</h1>
+    <h3 class="my-4">Lista de productos</h3>
     <table class="table table-bordered">
     <thead>
         <tr>
