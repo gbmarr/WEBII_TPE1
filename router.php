@@ -56,6 +56,7 @@ switch ($param[0]) {
         $authController->logout();
         break;
     case 'auth':
+        // valida el login
         $authController->authenticate();
         break;
     case 'category':
@@ -70,7 +71,7 @@ switch ($param[0]) {
                 case 'edit':
                     isset($param[2]) ? $categoryController->editCategory($param[2]) : $categoryController->errorCategory();
                     break;
-                case 'updatecat':
+                case 'update':
                     isset($param[2]) ? $categoryController->updateCategory($param[2]) : $categoryController->errorCategory();
                     break;
                 case 'delete':
