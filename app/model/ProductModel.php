@@ -5,13 +5,13 @@ class ProductModel extends Model {
 
 
     function getAllProducts(){
-        $query = "SELECT * FROM `products`";
+        $query = "SELECT `idproduct`, P.`name`, `description`, P.`idcategory`, C.`idcat`, C.`name` catdescription, `price`, `stock` FROM `products` P, `categories` C WHERE `idcategory` = `idcat`";
         $products = $this->executeQuery($query);
         return $products->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getProductByID($idproduct){
-        $query = "SELECT * FROM `products` WHERE `idproduct` = ?";
+        $query = "SELECT `idproduct`, P.`name`, `description`, P.`idcategory`, C.`idcat`, C.`name` catdescription, `price`, `stock` FROM `products` P, `categories` C WHERE `idcategory` = `idcat` AND `idproduct` = ?";
         $product = $this->executeQuery($query, [$idproduct]);
         return $product->fetch(PDO::FETCH_OBJ);
     }
