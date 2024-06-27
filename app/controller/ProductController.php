@@ -23,7 +23,6 @@ class ProductController extends AuthController{
     }
 
     function viewAllProductsAdmin(){
-        $this->checkAdmin();
         $products = $this->productModel->getAllProducts();
         $this->view->showAllProductsAdmin($products);
     }
@@ -43,10 +42,10 @@ class ProductController extends AuthController{
         $this->checkAdmin();
         $name = $_POST['name'];
         $description = $_POST['description'];
-        $idCategory = $_POST['idcategory'];
-        $stock = $_POST['stock'];
+        $idcategory = $_POST['idcategory'] ? intval($_POST['idcategory']) : 1;
+        $stock = boolval($_POST['stock']);
         $price = $_POST['price'];
-        $this->productModel->addProduct($name, $description, $idCategory, $stock, $price);
+        $this->productModel->addProduct($name, $description, $idcategory, $price, $stock);
         header('Location: ' . BASE_URL . '/');
     }
 
@@ -58,13 +57,12 @@ class ProductController extends AuthController{
     }
 
     function updateProduct($id){
-        $this->checkAdmin();
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $idcategory = $_POST['idcategory'] ? intval($_POST['idcategory']) : 1;
         $price = $_POST['price'];
-        $idCategory = $_POST['idCategory'];
-        $stock = $_POST['stock'];
-        $this->productModel->updateProduct($id, $name, $description, $idCategory, $price, $stock);
+        $stock = boolval($_POST['stock']);
+        $this->productModel->updateProduct($id, $name, $description, $idcategory, $price, $stock);
         header('Location: ' . BASE_URL . '');
     }
 

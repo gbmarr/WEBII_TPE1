@@ -38,8 +38,9 @@ class CategoryController extends AuthController{
 
     function updateCategory($id){
         $this->checkAdmin();
+        $idcat = intval($id);
         $categoryName = $_POST['name'];
-        $this->categoryModel->updateCategory($id, $categoryName);
+        $this->categoryModel->updateCategory($idcat, $categoryName);
         header('Location: ' . BASE_URL . '');
     }
 
