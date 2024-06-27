@@ -8,10 +8,15 @@
             Crear categoría
         {/if}
     </h3>
-    <form class="container" action="{BASE_URL}/category/store" method="POST">
+    <form class="container" action="
+        {if isset($category)}
+            {BASE_URL}/category/update/{$category->idcat}
+        {else}
+            {BASE_URL}/category/store
+        {/if}" method="POST">
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" name="name" value="{$category->name|default:''}">
+            <input type="text" class="form-control" name="name" value={$category->name|default:""}>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">

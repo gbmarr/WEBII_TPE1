@@ -10,7 +10,9 @@
             <th>Categoría</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Acciones</th>
+            {if $admin}
+                <th>Acciones</th>
+            {/if}
         </tr>
     </thead>
     <tbody>
@@ -18,7 +20,7 @@
             <tr>
                 <td>{$item->name}</td>
                 <td>{$item->description}</td>
-                <td>{$item->idcategory}</td>
+                <td>{$item->catdescription}</td>
                 <td>{$item->price}</td>
                 <td>
                     {if $item->stock}
@@ -27,14 +29,18 @@
                         <i class="bx bx-x"></i>
                     {/if}
                 </td>
+                {if $admin}
                 <td>
                     <a href="{BASE_URL}/edit/{$item->idproduct}" class="btn btn-primary">Editar</a>
                     <a href="{BASE_URL}/delete/{$item->idproduct}" class="btn btn-danger">Eliminar</a>
                 </td>
+                {/if}
             </tr>
         {/foreach}
     </tbody>
     </table>
-    <a href="{BASE_URL}/add" class="btn btn-primary">Agregar</a>
+    {if $admin}
+        <a href="{BASE_URL}/add" class="btn btn-primary">Agregar</a>
+    {/if}
 </div>
 {include '../layouts/footer.tpl'}

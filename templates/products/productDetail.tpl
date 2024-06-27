@@ -7,7 +7,7 @@
         <div class="card-body">
             <p>{$product->description}</p>
             <p>Precio: {$product->price}</p>
-            <p>Categoría: {$product->idcategory}</p>
+            <p>Categoría: {$product->catdescription}</p>
             {if $product->stock}
                 <p>Stock: disponible</p>
                 {else}

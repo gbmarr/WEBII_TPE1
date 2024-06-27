@@ -20,18 +20,18 @@
             <input type="text" class="form-control" name="name" value="{$product->name|default:''}">
         </div>
         <div class="form-group">
-            <label for="name">Descripción:</label>
+            <label for="description">Descripción:</label>
             <textarea class="form-control" name="description" rows="5" >{$product->description|default:''}</textarea>
         </div>
         <div class="form-group">
-            <label for="name">Precio:</label>
+            <label for="price">Precio:</label>
             <input type="number" class="form-control" name="price" value="{$product->price|default:''}">
         </div>
         <div class="form-group">
-            <label for="name">Categoría:</label>
+            <label for="idcategory">Categoría:</label>
                 <select name="idcategory" class="form-control">
-                    {foreach $categories as $category}
-                        <option value="{$category->idcat}"
+                    {foreach from=$categories item=$category}
+                        <option value={$category->idcat}
                             {if $product && $product->idcategory == $category->idcat}
                                 selected
                             {/if}>
@@ -41,11 +41,17 @@
                 </select>
         </div>
         <div class="form-group">
-            <label for="name">Stock:</label>
-                <input type="radio" name="stock" value="{if $product}{$product->stock}{/if}" {if $product && $product->stock}checked{/if}/>
-                <label for="true">Disponible</label>
-            <input type="radio" name="stock" value="{if $product}{$product->stock}{/if}" {if $product && !$product->stock}checked{/if}/>
-                <label for="false">No disponible</label>
+            <label for="stock">Stock:</label>
+                <input type="checkbox" name="stock" value=
+                {if ($product === null)}
+                    false
+                {else}
+                    {$product->stock}
+                {/if}
+                {if $product && $product->stock}
+                    checked
+                {/if}
+                />
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">

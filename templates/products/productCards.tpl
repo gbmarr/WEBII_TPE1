@@ -10,10 +10,11 @@
                     <h5 class="card-title">{$item->name}</h5>
                     <p class="card-text">Descripción: {$item->description}</p>
                     <p class="card-text">Precio: {$item->price}</p>
+                    <p class="card-text">Categoría: {$item->catdescription}</p>
                         {if $item->stock}
-                            <p><i class='bx bx-check'></i></p>
+                            <p>Stock: <i class='bx bx-check'></i></p>
                         {else}
-                            <p><i class='bx bx-x'></i></p>
+                            <p>Stock: <i class='bx bx-x'></i></p>
                         {/if}
                     <a href="{BASE_URL}/detail/{$item->idproduct}" class="btn btn-primary">Detalle</a>
                 </div>
